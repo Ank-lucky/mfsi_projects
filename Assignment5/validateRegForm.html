@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title>Registeration Form</title>
+    <link rel="stylesheet" href="CSS/validateRegForm.css">
+    <script src="JS/validateRegForm.js"></script>
+</head>
+
+<body>
+    <div class="MainContainer">
+        <div class="FormContainer">
+            <form method="POST" action="/" >
+                <div class="show">
+                <fieldset >
+                    <legend>Personal Details</legend>
+                
+                <p>First Name:
+                        <span class="required">*</span>
+                        <input type="text" placeholder="firstname" > </p>
+                    <p>Last Name:
+                        <span class="required">*</span>
+                        <input type="text" placeholder="lastname" >
+                    </p>
+                    
+                    <p>Gender:
+                        <span class="required">*</span>
+                        <select required>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </p>
+                    <p>Phone 1:
+                        <span class="required">*</span>
+                        <input type="text" placeholder="Phone No" >
+                    </p>
+        
+                    <p>Phone 2:
+                        <input type="text" placeholder="Alternate Phone No">
+                    </p>
+                    <p>Address 1:
+                        <span class="required">*</span>
+                        <input type="text" >
+                    </p>
+                    <p>Address 2:
+                        <input type="text">
+                    </p>
+                    <p>City:
+                        <span class="required">*</span>
+                        <input type="text" >
+                    </p>
+                    <p>State:
+                            <span class="required">*</span>
+                            <select >
+                                    <option>a</option>
+                                    <option>b</option>
+                            </select>
+                    </p>
+                    <p>Country:
+                            <span class="required">*</span>
+                            <select required>
+                                <option>India</option>
+                                <option>other</option>
+                            </select>
+                    </p>
+                    <button class="btn" onclick="enterMoreFields()">Next</button>
+
+                </fieldset>
+                </div>
+                <div class="hidden">
+                 <fieldset >
+                    <legend >Authentication Details</legend>
+                        <p >Email:
+                                <span class="required">*</span>
+                                <input class="hidden" type="text" placeholder="Email" >
+                            </p>
+                            <p>Password:
+                                <span class="required">*</span>
+                                <input class="hidden" type="password" placeholder="Enter Password" >
+                            </p>
+                
+                            <p>Confirm-Password:
+                                <span class="required">*</span>
+                                <input class="hidden" type="password" placeholder="Re-enter password" >
+                            </p>
+                </fieldset>
+            </div>
+                <!-- <p>Subscribe newletter?:
+                        <select >
+                            <option>yes</option>
+                            <option>no</option>
+                        </select>
+                    </p>
+                    <button class="btn" type="submit">Register</button>
+                    <div id="note">* fields are mandatory</div> -->
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

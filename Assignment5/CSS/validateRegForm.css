@@ -1,0 +1,46 @@
+
+.formContainer{
+    margin:0 auto; 
+    width:50%;
+    border:1px solid;
+    padding:5px;
+    margin-top:5%;
+}
+legend{
+    color: blue;
+    font-size: 25px;
+}
+.required{
+    color:red;
+}
+input[type=text],[type=email],[type=password],select{
+    float: right;
+    width: 40%;
+    padding: 12px 20px 0 20px;
+    margin: 2px 40;
+    border: none;
+    border-bottom: 2px solid rgba(0, 89, 255, 0.63);
+}
+select{
+    border:2px solid  rgba(0, 89, 255, 0.63) ;
+}
+
+p{
+    font-style: 'Times New Roman', Times, serif;
+    font-size:20px;
+}
+.btn{
+    background-color: rgba(0, 89, 255, 0.63);
+    width:10%;
+    height:5%;
+    margin-left:80%;
+    margin-right:20%;
+    color:whitesmoke;
+    /* border:2px solid rgba(0, 89, 255, 0.63); */
+}
+#note{
+    color:red;
+}
+.hidden{
+    display:none;
+}
