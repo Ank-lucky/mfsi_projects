@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Registration Form</title>
+        <style>
+            body{
+                background-color:#607d8b;
+            }
+            #banner{
+                margin-left:180;
+                margin-right:100;
+                height:280px;
+            }
+            #logo{
+              float:left;
+              position: absolute;
+              width:50px;
+              height:50px;
+              margin-left:180;
+            }
+            .form{
+                /* float:left; */
+                margin-top: 20px;
+                margin-left: 25%;
+                margin-right:20%;
+                width: 50%;
+                font-size:20px;
+                padding: 20px;
+                font-family: 'Times New Roman', Times, serif;
+                border: 1px solid whitesmoke;
+                /* box-shadow: 8px 8px rgba(245, 245, 245, 0.836); */
+            }
+            button{
+                float:right;
+                padding:10 24;
+                color:blanchedalmond;
+                background-color:rgb(39, 110, 243);
+                border-radius:12px;
+            }
+            input{
+                margin-left:25px;
+            }
+            
+            @media(max-width:600){
+                button{
+                    float:left;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <img id="logo" src="images/logo2.jpg">
+            <img id="banner" src="images/banner1.jpg">
+        </div>
+        
+        <div class="form">
+            <form>
+                Name: <input type="text" placeholder="firstname">
+                  <input type="text" placeholder="middlename">
+                  <input type="text" placeholder="lastname">
+                    <br><br>
+                Email-id: <input type="text" placeholder="you@example.com"><br><br>
+                Phone No.: <input type="text"> <br><br>
+                Date Of Birth: <input type="date"> <br><br>
+                Gender:<select>
+                        <option>Male</option>
+                        <option>Female</option>
+                       </select><br><br>
+                       <hr>
+                <strong>Current Address</strong>:<br><br>
+                                 City:<input type="text"> State:<input type="text"><br>
+                                country:<input type="text"><br>Pincode:<input type="text"><br><br>
+                <strong>Permanent Address:</strong><br><br>
+                                 City:<input type="text"> State:<input type="text"><br>
+                                 country:<input type="text"><br>Pincode:<input type="text"><br><br>
+                        <hr>
+                Personal Interest: <input type="checkbox">Sports
+                <input type="checkbox">Books
+                <input type="checkbox">Fashion
+                <input type="checkbox">Computer& Software<br>
+                <input type="checkbox">Photography
+                <br><br>
+                Password: <input type="password"><br><br>
+                Re-Enter Password: <input type="password"><br><br>
+                <button type="Submit">Register</button>
+
+            </form>
+        </div>
+    </body>
+</html>
