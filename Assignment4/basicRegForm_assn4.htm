@@ -3,60 +3,60 @@
 <head>
     <title>Registration Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="JS/basicRegForm_assn4.js"></script>
 </head>
 
-<body>
+<body style="background: linear-gradient(to bottom right, lightblue, lightgreen);">
     <div id="regForm">
         <h1 style="color:rgb(75, 162, 196);text-align: center">Registration Form</h1>
-        <form style=" display: block;border-bottom: 4px;border-right:4px;padding: 10px; width:60%; background: linear-gradient(to bottom right, lightblue, lightgreen);margin-left:20%;margin-right:20%" onsubmit="clicked()" >
+        <form style=" display: block;border-bottom: 4px;border-right:4px;padding: 10px; width:60%; margin-left:20%;margin-right:20%;background-color:whitesmoke;"
+            onsubmit="clicked()">
             <p>First Name:
                 <span class="required" style="color:red">*</span>
-                <input type="text" placeholder="firstname" required>
+                <input type="text" placeholder="Enter Firstname" required style=" float: right;width: 30%;margin: 2px 150;">
             </p>
             <p>Last Name:
                 <span class="required" style="color:red">*</span>
-                <input type="text" placeholder="lastname" required>
+                <input type="text" placeholder="Enter Lastname" required style=" float: right;width: 30%;margin: 2px 150;">
             </p>
             <p>Email:
                 <span class="required" style="color:red">*</span>
-                <input type="text" placeholder="Email" required>
+                <input type="text" placeholder="Enter Email" required style=" float: right;width: 30%;margin: 2px 150;">
             </p>
             <p>Password:
                 <span class="required" style="color:red">*</span>
-                <input type="password" placeholder="Enter Password" required>
+                <input type="password" placeholder="Enter Password" required style=" float: right;width: 30%;margin: 2px 150;">
             </p>
             <p>Confirm-Password:
                 <span class="required" style="color:red">*</span>
-                <input type="password" placeholder="Re-enter password" required>
+                <input type="password" placeholder="Re-enter password" required style=" float: right;width: 30%;margin: 2px 150;">
             </p>
             <p>Gender:
                 <span class="required" style="color:red">*</span>
-                <select required>
+                <select required style=" float: right;width: 30%;margin: 2px 150;">
                     <option>Male</option>
                     <option>Female</option>
                 </select>
                 <p>Phone 1:
                     <span class="required" style="color:red">*</span>
-                    <input type="text" placeholder="Phone No" required>
+                    <input type="text" placeholder="Phone No" required style=" float: right;width: 30%;margin: 2px 150;">
                 </p>
                 <p>Phone 2:
-                    <input type="text" placeholder="Alternate Phone No">
+                    <input type="text" placeholder="Alternate Phone No" style=" float: right;width: 30%;margin: 2px 150;">
                 </p>
                 <p>Address 1:
                     <span class="required" style="color:red">*</span>
-                    <input type="text" required>
+                    <input type="text" required style=" float: right;width: 30%;margin: 2px 150;">
                 </p>
                 <p>Address 2:
-                    <input type="text">
+                    <input type="text" style=" float: right;width: 30%;margin: 2px 150;">
                 </p>
                 <p>City:
                     <span class="required" style="color:red">*</span>
-                    <input type="text" required>
+                    <input type="text" required style=" float: right;width: 30%;margin: 2px 150;">
                 </p>
                 <p>State:
                     <span class="required" style="color:red">*</span>
-                    <select required>
+                    <select required style=" float: right;width: 30%;margin: 2px 150;">
                         <option>Delhi</option>
                         <option>Uttar Pradesh</option>
                         <option>Tamil Nadu</option>
@@ -91,19 +91,20 @@
                 </p>
                 <p>Country:
                     <span class="required" style="color:red">*</span>
-                    <select required>
+                    <select required style=" float:right;width: 30%;margin: 2px 150;">
                         <option>India</option>
                         <option>other</option>
                     </select>
                 </p>
 
                 <p>Subscribe newletter? :
-                    <select required>
+                    <select required style=" float: right; width: 30%;margin: 2px 150;">
                         <option>yes</option>
                         <option>no</option>
                     </select>
                 </p>
-                <button type="submit" style="background-color:rgb(75, 162, 196);height: 40px;width:90px ;font-size:20px;">Register</button>
+                <button type="submit" style="background-color:rgb(75, 162, 196);height: 40px;width:90px ;font-size:20px;margin:2 300">Register</button>
+                <p style="color:red ;float:right;">* fields are mandatory</p>
         </form>
     </div>
 </body>
