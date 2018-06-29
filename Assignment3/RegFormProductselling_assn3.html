@@ -36,16 +36,23 @@
                 background-color:rgb(39, 110, 243);
                 border-radius:12px;
             }
-            input{
-                margin-left:25px;
+            input[type=text],[type=checkbox],[type=email],[type=date],[type=password],select,label{
+                float:right;
+                /* margin-left:25px;  */
             }
-            
+            #dob{
+                margin-right:25px;
+            }
+            #gender{
+                margin-right:100px;
+            }
             @media(max-width:600){
                 button{
                     float:left;
                 }
             }
         </style>
+      
     </head>
     <body>
         <div>
@@ -55,30 +62,33 @@
         
         <div class="form">
             <form>
-                Name: <input type="text" placeholder="firstname">
-                  <input type="text" placeholder="middlename">
-                  <input type="text" placeholder="lastname">
+                First Name: <input type="text" placeholder="firstname"><br><br>
+                Middle Name  <input type="text" placeholder="middlename"><br><br>
+                Last Name<input type="text" placeholder="lastname">
                     <br><br>
                 Email-id: <input type="text" placeholder="you@example.com"><br><br>
                 Phone No.: <input type="text"> <br><br>
-                Date Of Birth: <input type="date"> <br><br>
-                Gender:<select>
+                Date Of Birth: <input type="date" id="dob"> <br><br>
+                Gender:<select id="gender">
                         <option>Male</option>
                         <option>Female</option>
                        </select><br><br>
                        <hr>
                 <strong>Current Address</strong>:<br><br>
-                                 City:<input type="text"> State:<input type="text"><br>
-                                country:<input type="text"><br>Pincode:<input type="text"><br><br>
+                                 City:<input type="text"> <br>
+                                 State:<input type="text"><br>
+                                 Country:<input type="text"><br>Pincode:<input type="text"><br><br>
                 <strong>Permanent Address:</strong><br><br>
-                                 City:<input type="text"> State:<input type="text"><br>
-                                 country:<input type="text"><br>Pincode:<input type="text"><br><br>
+                                 City:<input type="text"><br>
+                                 State:<input type="text"><br>
+                                 Country:<input type="text"><br>Pincode:<input type="text"><br><br>
                         <hr>
-                Personal Interest: <input type="checkbox">Sports
-                <input type="checkbox">Books
-                <input type="checkbox">Fashion
-                <input type="checkbox">Computer& Software<br>
-                <input type="checkbox">Photography
+                Personal Interest: 
+                <label>Sports</label><input type="checkbox">
+                <label>Books</label><input type="checkbox">
+                <label>Fashion</label><input type="checkbox"><br>
+                <label>Computer& Software</label><input type="checkbox"><br>
+                <label>Photography</label><input type="checkbox">
                 <br><br>
                 Password: <input type="password"><br><br>
                 Re-Enter Password: <input type="password"><br><br>
