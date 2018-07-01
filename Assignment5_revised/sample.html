@@ -1,0 +1,110 @@
+<html>
+<head>
+	<title>Sample</title>
+	<link rel="stylesheet" href="sample.css">
+</head>
+	<body>
+		<div id="particles-js">
+		
+		<div  class="MainContainer">
+		<div class="FirstSection">
+			<h1>Register here</h1>
+			<i>and get exciting Rewards!!</i>
+			<!--<img id="image" src=""> -->
+			</div>
+			
+			<div class="SecondSection">
+				<form method="POST" action="#" onsubmit="return validate()">
+                <div class="show">
+                    <fieldset>
+                        <legend>Personal Details</legend>
+
+                        <p>First Name:
+                            <span class="required">*</span>
+                            <input type="text" placeholder="firstname" id="fname"> </p>
+                            <span  id="showError1"></span>
+                        <p>Last Name:
+                            <span class="required">*</span>
+                            <input type="text" placeholder="lastname" id="lname"></p>
+                            <span  id="showError2"></span>
+
+                        <p>Gender:
+                            <span class="required">*</span>
+                            <input id="radiomale" type="radio" name="gender" value="male" id="gender1"><label>Male</label><br>
+                            <input id="radiofemale"type="radio" name="gender" value="female" id="gender2"><label>Female</label><br>
+                            <input id="radioothers" type="radio" name="gender" value="other" id="gender3"><label>Others</label><br>
+                        </p>
+                        <p>Phone 1:
+                            <span class="required">*</span>
+                            <input type="text" placeholder="Phone No" id="phoneNo">
+                        </p>
+                        <p>Phone 2:
+                            <input type="text" placeholder="Alternate Phone No" id="SecndPhoneNo">
+                        </p>
+                        <p>Address 1:
+                            <span class="required">*</span>
+                            <input type="text" id="address">
+                        </p>
+                        <p>Address 2:
+                            <input type="text">
+                        </p>
+                        <p>City:
+                            <span class="required">*</span>
+                            <input type="text" id="city">
+                        </p>
+                        <p>State:
+                            <span class="required">*</span>
+                            <select id="state">
+                                <option>a</option>
+                                <option>b</option>
+                            </select>
+                        </p>
+                        <p>Country:
+                            <span class="required" id="country">*</span>
+                            <select>
+                                <option>India</option>
+                                <option>other</option>
+                            </select>
+                        </p>
+                        <!-- <button class="btn" onclick="enterMoreFields()">Next</button> -->
+
+                    </fieldset>
+                </div>
+                <div class="hidden">
+                    <fieldset>
+                        <legend>Authentication Details</legend>
+                        <p>Email:
+                            <span class="required">*</span>
+                            <input class="hidden" type="text" placeholder="Email" id="email">
+                        </p>
+                        <p>Password:
+                            <span class="required">*</span>
+                            <input class="hidden" type="password" placeholder="Enter Password" id="password">
+                        </p>
+
+                        <p>Confirm-Password:
+                            <span class="required">*</span>
+                            <input class="hidden" type="password" placeholder="Re-enter password" id="confrmPassword">
+                        </p>
+                    </fieldset>
+                </div>
+                <fieldset><legend>Subscription</legend>
+                <p>Subscribe newsletter?:
+                        <select >
+                            <option>yes</option>
+                            <option>no</option>
+                        </select>
+                    </p>
+                    
+                </fieldset>
+                <button class="btn" type="submit">Register</button>
+                <div id="note">* fields are mandatory</div>
+            </form>
+
+			</div>
+		</div>
+				<script rel="text/javascript" src="particles.js"></script>
+				<script rel="text/javascript" src="app.js"></script>
+		</div>
+	</body>
+</html>
