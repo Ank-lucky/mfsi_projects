@@ -1,17 +1,15 @@
 function validate() {
+    console.log("in validate");
     var firstName = document.getElementById('fname').value;
     var lastName = document.getElementById('lname').value;
     flag = true;
+    firstBlankField=true;
     if (firstName == "") {
-        displayErrors("showError1", "fname", 0);
+        displayErrors("showError1", "fname", 0,firstBlankField);
         flag = false;
     }
     if (lastName == "") {
-        displayErrors("showError2", "lname", 0);
-        flag = false;
-    }
-    if(gender.checked == ""){
-        displayErrors("showError3", "gender", 0);
+        displayErrors("showError2", "lname", 0,firstBlankField);
         flag = false;
     }
     return flag;
@@ -20,7 +18,8 @@ function validate() {
 /*displayErrors will display the errors according to the typeOfError(a number) passed,
     fieldId is the field id whose error is detected and 
     errorId is the id of the span where error is to be displayed */
-function displayErrors(errorId, fieldId, typeOfError) { 
+function displayErrors(errorId, fieldId, typeOfError,firstBlankField) { 
+    console.log("indisplayError");
     errors = [{
         id: "fname",
         error: ["* Enter First Name", "* Enter only letters", "* Enter first name more than 3 letters"]
@@ -32,34 +31,62 @@ function displayErrors(errorId, fieldId, typeOfError) {
     {
         id: "gender",
         error: ["* Select Gender"]
-    }
+    },
+    {
+        id:"phoneNo",
+        error:["*Please enter Phone Number","*Please enter 10 digits valid phone no."]
+    },
+    {
+        id:"altPhoneNo",
+        error:["*Please enter 10 digits valid phone no."]
+    },
+    {
+        id:"address",
+        error:["*Please enter your address"]
+    },
+    {
+        id:"city",
+        error:["*Please enter city name","*Please enter a valid city"]
+    },
+    {
+        id:"state",
+        error:["*Please enter state name", "*Please enter a valid State"]
+    },
+    {
+        id:"Country",
+        error:["*Please enter country name","*Please enter a valid country"]
+    },
+    {
+        id:"email",
+        error:["*Please enter email address","Please enter a valid email"]
+    },
+    {
+        id:"password",
+        error:["*Please enter password","Please enter a valid password "]
+    },
+    {
+        id:"confirmPassword",
+        error:["*Please confirm the password","*Passwords do not match"]
+    },
+
     ]
-    console.log(errors);
     let i = 0;
     errors.forEach(item => {
         if (item.id == fieldId) {
             while (i < item.error.length) {
                 if (typeOfError == i) {
                     document.getElementById(errorId).innerHTML = item.error[i];
-                    document.getElementById(fieldId).focus();
+                        if(firstBlankField){
+                            document.getElementById(fieldId).focus();
+                        }
                     document.getElementById(errorId).style.color = "red";
-                    document.getElementById(errorId).style.fontSize = "30";
+                    document.getElementById(errorId).style.fontsize = "2%";
+                    // document.getElementById(errorId).style.;
+                    
                 }
                 i = i + 1;
             }
         }
 
     });
-} /*displayErrors() ends */
-
-
-// function enterMoreFields(){
-//     var hidden=document.getElementsByClassName("hidden");
-//     var show= document.getElementsByClassName("show");
-//     show.style.display="none";
-//     hidden.style.display="block";
-//     // for(var i=0;i < hidden.length;i++){
-//     // hidden[i].style.display="block";
-//     // }
-
-// }
+}

@@ -1,104 +1,127 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Registeration Form</title>
+    <title>Reward Registeration Form</title>
     <link rel="stylesheet" href="CSS/validateRegForm.css">
-    <script src="JS/validateRegForm.js" type="text/javascript"></script>
+    <script rel="text/javascript" src="JS/validateRegForm.js"></script>
 </head>
 
 <body>
-    <div class="MainContainer">
-        <div class="FormContainer">
-            <form method="POST" action="#" onsubmit="return validate()">
-                <div class="show">
-                    <fieldset>
-                        <legend>Personal Details</legend>
+        <div class="MainContainer">
+            <div class="FirstSection">
+                <h1>Register here</h1>
+                <i>and get exciting Rewards!!</i>
+                <!--<img id="image" src=""> -->
+            </div>
 
-                        <p>First Name:
-                            <span class="required">*</span>
-                            <input type="text" placeholder="firstname" id="fname"> </p>
-                            <span  id="showError1"></span>
-                        <p>Last Name:
-                            <span class="required">*</span>
-                            <input type="text" placeholder="lastname" id="lname"></p>
-                            <span  id="showError2"></span>
+            <div class="SecondSection">
+                <form method="POST" action="#" onsubmit="return validate()">
+                    <div class="PersonalDetails">
+                        <fieldset>
+                            <legend>Personal Details</legend>
 
-                        <p>Gender:
-                            <span class="required">*</span>
-                            <label>Male</label><input type="radio" name="gender" value="male" id="gender1">
-                            <label>Female</label><input type="radio" name="gender" value="female" id="gender2">
-                            <label>Others</label> <input type="radio" name="gender" value="other" id="gender3">
-                        </p>
-                        <p>Phone 1:
-                            <span class="required">*</span>
-                            <input type="text" placeholder="Phone No" id="phoneNo">
-                        </p>
-                        <p>Phone 2:
-                            <input type="text" placeholder="Alternate Phone No" id="SecndPhoneNo">
-                        </p>
-                        <p>Address 1:
-                            <span class="required">*</span>
-                            <input type="text" id="address">
-                        </p>
-                        <p>Address 2:
-                            <input type="text">
-                        </p>
-                        <p>City:
-                            <span class="required">*</span>
-                            <input type="text" id="city">
-                        </p>
-                        <p>State:
-                            <span class="required">*</span>
-                            <select id="state">
-                                <option>a</option>
-                                <option>b</option>
-                            </select>
-                        </p>
-                        <p>Country:
-                            <span class="required" id="country">*</span>
-                            <select>
-                                <option>India</option>
-                                <option>other</option>
-                            </select>
-                        </p>
-                        <!-- <button class="btn" onclick="enterMoreFields()">Next</button> -->
+                            <label>First Name:
+                                <span class="required">*</span>
+                                <input type="text" placeholder="firstname" id="fname"> </label>
+                            <span id="showError1"></span>
 
-                    </fieldset>
-                </div>
-                <div class="hidden">
-                    <fieldset>
-                        <legend>Authentication Details</legend>
-                        <p>Email:
-                            <span class="required">*</span>
-                            <input class="hidden" type="text" placeholder="Email" id="email">
-                        </p>
-                        <p>Password:
-                            <span class="required">*</span>
-                            <input class="hidden" type="password" placeholder="Enter Password" id="password">
-                        </p>
+                            <label>Last Name:
+                                <span class="required">*</span>
+                                <input type="text" placeholder="lastname" id="lname">
+                            </label>
+                            <span id="showError2"></span>
 
-                        <p>Confirm-Password:
-                            <span class="required">*</span>
-                            <input class="hidden" type="password" placeholder="Re-enter password" id="confrmPassword">
-                        </p>
-                    </fieldset>
-                </div>
-                <fieldset><legend>Subscription</legend>
-                <p>Subscribe newsletter?:
-                        <select >
-                            <option>yes</option>
-                            <option>no</option>
-                        </select>
-                    </p>
-                    
-                </fieldset>
-                <button class="btn" type="submit">Register</button>
-                <div id="note">* fields are mandatory</div>
-            </form>
+                            <label>Gender:
+                                <span class="required">*</span>
+                                <div class="radioButtons">
+                                    <input  type="radio" name="gender" value="male" id="gender1">Male
+                                    <input type="radio" name="gender" value="female" id="gender2">Female
+                                    <input type="radio" name="gender" value="other" id="gender3">Others
+                                </div>
+                            </label>
 
+                            <label>Phone 1:
+                                <span class="required">*</span>
+                                <input type="text" placeholder="Phone No" id="phoneNo">
+                            </label>
+
+                            <label>Phone 2:
+                                <input type="text" placeholder="Alternate Phone No" id="altPhoneNo">
+                            </label>
+
+                            <label>Address 1:
+                                <span class="required">*</span>
+                                <input type="text" id="address">
+                            </label>
+
+                            <label>Address 2:
+                                <input type="text">
+                            </label>
+
+                            <label>City:
+                                <span class="required">*</span>
+                                <input type="text" id="city">
+                            </label>
+
+                            <label>State:
+                                <span class="required">*</span>
+                                <select id="state">
+                                    <option>a</option>
+                                    <option>b</option>
+                                </select>
+                            </label>
+
+                            <label>Country:
+                                <span class="required" id="country">*</span>
+                                <select>
+                                    <option>India</option>
+                                    <option>other</option>
+                                </select>
+                            </label>
+                            <!-- <button class="btn" onclick="enterMoreFields()">Next</button> -->
+
+                        </fieldset>
+                    </div>
+                    <div class="AuthenticationDetails">
+                        <fieldset>
+                            <legend>Authentication Details</legend>
+                            <label>Email:
+                                <span class="required">*</span>
+                                <input class="hidden" type="text" placeholder="Email" id="email">
+                            </label>
+                            <label>Password:
+                                <span class="required">*</span>
+                                <input class="hidden" type="password" placeholder="Enter Password" id="password">
+                            </label>
+
+                            <label>Confirm-Password:
+                                <span class="required">*</span>
+                                <input class="hidden" type="password" placeholder="Re-enter password" id="confrmPassword">
+                            </label>
+                        </fieldset>
+                    </div>
+                    <div class="Subscription">
+                        <fieldset>
+                            <legend>Subscription</legend>
+                            <label>Subscribe newsletter?:
+                                <select>
+                                    <option>yes</option>
+                                    <option>no</option>
+                                </select>
+                            </label>
+
+                        </fieldset>
+                    </div>
+                    <div class="lastFormRow">
+                        <button class="btn" type="submit">Register</button>
+                        <div id="note">* fields are mandatory</div>
+                    </div>
+                </form>
+                
+            </div>
         </div>
-    </div>
+        <footer>Mindfire Solutions</footer>
+        
 </body>
 
 </html>
