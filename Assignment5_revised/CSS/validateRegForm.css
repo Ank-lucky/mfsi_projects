@@ -1,0 +1,139 @@
+ .particles{
+	 display:flex;
+	 justify-content: center;
+	 align-items: center;
+ }
+ #particles-js{
+	height:100vh;
+	position:relative;
+}
+ .MainContainer{
+	width:90%;
+	height:80%;
+    border:1px solid whitesmoke;
+    padding:5px;
+	display:flex;
+	position:absolute;
+ }
+ .FirstSection{
+	 flex:1;
+     color: whitesmoke;
+     background: rgba(146, 255, 221, 0.685);
+     font-family: sans-serif;
+ }
+ .SecondSection{
+		flex:2;
+		overflow-y: auto;
+		overflow-x:auto; 
+		display: flex;
+		flex-direction: column;
+ }
+ .PersonalDetails{
+	 flex:1;
+ }
+ .AuthenticationDetails{
+	 flex:2;
+ }
+ .Subscription{
+	 flex:3;
+ }
+ .lastFormRow{
+	 flex:4;
+ }
+ .required{
+    color:red;  
+}
+legend{
+	font-size:25px;
+	color:rgba(146, 255, 221, 0.685);
+}
+form{
+	font-style: 'Times New Roman', Times, serif;
+	font-size:20px;
+}
+ input[type=text],[type=email],[type=password],select{
+	float: right;
+	height: 5%;
+    width: 40%;
+    margin: 2 40 0 0;
+    border: none;
+	border-bottom: 2px solid rgba(146, 255, 221, 0.685); /*rgba(0, 89, 255, 0.63)*/
+	border-radius:5px;
+	padding:5px;
+} 
+input[type=radio]{
+	height:10px;
+}
+.radioButtons{
+	margin-left:54%;
+	color: whitesmoke;
+}
+h1{
+	margin-top:40%;
+	margin-left:2%;
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size:200%;
+	
+}
+i{
+	margin-left:5%;
+	font-size:1.5em;
+}
+
+body{
+	margin:0;
+	padding:0;
+	background:rgb(22, 22, 22);;
+}
+
+#image{
+	width:30%;
+	height:30%;
+}
+.btn{
+	display:inline-block;
+	padding: 5px 10px;
+	font-size: 20px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color:white;
+	background-color: rgba(146, 255, 221, 0.685);
+	border-radius: 5px;
+	border:none;
+	box-shadow: 0 9px rgba(146, 255, 221, 0.137);
+	margin-left:60%;
+	margin-top:5%;
+	
+}
+.btn:hover {
+	background-color: #2ac2a9b6;
+}
+.btn:active{
+	background-color: #2ac2a9b6;
+	box-shadow:0 4px rgba(146, 255, 221, 0.068);
+	transform: translateY(4px);
+}
+
+#note{
+	color:red;
+}
+label{
+	color:rgba(146, 255, 221, 0.685);
+	display:block;
+	padding:2%;
+}
+
+@media only screen and (max-width:645px){
+	.MainContainer{
+		flex-direction:column;
+	}
+	.radioButtons{
+		display: block;
+	}
+	h1,i{
+		margin:0;
+	}
+	
+}
