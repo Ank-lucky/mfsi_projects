@@ -3,31 +3,41 @@
 }
 h1{
   text-align: center;
+  color:whitesmoke;
 }
 form{
     display: block;
     border-bottom: 4px;
     border-right:4px;
     padding: 10px; 
-    width:60%;
+    /* width:60%; */
     background-color:whitesmoke;     
-    margin-left: 20%;
-    margin-right: 20%;
+    /* margin-left: 20%;
+    margin-right: 20%; */
   
+}
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.firstColumn{
+    flex:1;
+}
+.secondColumn{
+    flex:2;
 }
 button{
     background-color:rgb(75, 162, 196);
     height: 40px;
     width:90px ;
     font-size:20px;
-    margin-left: 45%;
+    /* margin-left: 45%; */
 }
 #note{
     float:right;
     color:red;
-}
-body{
-    background-color: whitesmoke;
 }
 input[type=text],[type=password],[type=email],select{
     float: right;
@@ -46,6 +56,6 @@ p{
     padding-left:70px;
 }
 body{
-    background: linear-gradient(to bottom right, lightblue, lightgreen);
-
+    /* background: linear-gradient(to bottom right, lightblue, lightgreen); */
+    background-color:rgb(16, 20, 41);
 }

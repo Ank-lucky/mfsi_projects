@@ -9,109 +9,112 @@
 <body>
     <div class="regForm">
         <h1>Registration Form</h1>
-        <form>
-            <p>First Name:
-                <span class="required">*</span>
-                <input type="text" placeholder="Enter Firstname" required> </p>
-            <p>Last Name:
-                <span class="required">*</span>
-                <input type="text" placeholder="Enter Lastname" required>
-            </p>
-            <p>Gender:
-                <span class="required">*</span>
-                <select required>
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
-            </p>
-            <p>Phone 1:
-                <span class="required">*</span>
-                <input type="text" placeholder="Phone No." required>
-            </p>
+        <div class="container">
+            <form method="POST">
+                <div class="firstColumn">
+                    <p>First Name:
+                        <span class="required">*</span>
+                        <input type="text" placeholder="Enter Firstname" required> </p>
+                    <p>Last Name:
+                        <span class="required">*</span>
+                        <input type="text" placeholder="Enter Lastname" required>
+                    </p>
+                    <p>Gender:
+                        <span class="required">*</span>
+                        <select required>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </p>
+                    <p>Phone 1:
+                        <span class="required">*</span>
+                        <input type="text" placeholder="Phone No." required>
+                    </p>
 
-            <p>Phone 2:
-                <input type="text" placeholder="Alternate Phone No.">
-            </p>
-            <p>Address 1:
-                <span class="required">*</span>
-                <input type="text" placeholder="Enter current address" required>
-            </p>
-            <p>Address 2:
-                <input type="text" placeholder="Enter permanent address">
-            </p>
-            <p>City:
-                <span class="required">*</span>
-                <input type="text" placeholder="Enter City Name" required>
-            </p>
-            <p>State:
-                <span class="required">*</span>
-                <select required>
-                    <option>Delhi</option>
-                    <option>Uttar Pradesh</option>
-                    <option>Tamil Nadu</option>
-                    <option>Jammu Kashmir</option>
-                    <option>Odisha</option>
-                    <option>Uttrakhand</option>
-                    <option>Rajasthan</option>
-                    <option>Karnataka</option>
-                    <option>Gujurat</option>
-                    <option>Madhya Pradesh</option>
-                    <option>West Bengal</option>Sikkim
-                    <option>Chhattisgarh</option>
-                    <option>Manipur</option>
-                    <option>Kerela</option>
-                    <option>Maharashtra</option>
-                    <option>Goa</option>
-                    <option>Harayana</option>
-                    <option>Assam</option>
-                    <option>Himachal Pradesh</option>
-                    <option>Tripura</option>
-                    <option>Arunachal Pradesh</option>
-                    <option>Telengana</option>
-                    <option>Bihar</option>
-                    <option>Punjab</option>
-                    <option>Andhra Pradesh</option>
-                    <option>Jharkhand</option>
-                    <option>Nagaland</option>
-                    <option>Meghalaya</option>
-                    <option>Mizoram</option>
-                    <option>others</option>
-                </select>
-            </p>
+                    <p>Phone 2:
+                        <input type="text" placeholder="Alternate Phone No.">
+                    </p>
+                    <p>Address 1:
+                        <span class="required">*</span>
+                        <input type="text" placeholder="Enter current address" required>
+                    </p>
+                    <p>Address 2:
+                        <input type="text" placeholder="Enter permanent address">
+                    </p>
+                    <p>City:
+                        <span class="required">*</span>
+                        <input type="text" placeholder="Enter City Name" required>
+                    </p>
+                    <p>State:
+                        <span class="required">*</span>
+                        <select required>
+                            <option>Delhi</option>
+                            <option>Uttar Pradesh</option>
+                            <option>Tamil Nadu</option>
+                            <option>Jammu Kashmir</option>
+                            <option>Odisha</option>
+                            <option>Uttrakhand</option>
+                            <option>Rajasthan</option>
+                            <option>Karnataka</option>
+                            <option>Gujurat</option>
+                            <option>Madhya Pradesh</option>
+                            <option>West Bengal</option>Sikkim
+                            <option>Chhattisgarh</option>
+                            <option>Manipur</option>
+                            <option>Kerela</option>
+                            <option>Maharashtra</option>
+                            <option>Goa</option>
+                            <option>Harayana</option>
+                            <option>Assam</option>
+                            <option>Himachal Pradesh</option>
+                            <option>Tripura</option>
+                            <option>Arunachal Pradesh</option>
+                            <option>Telengana</option>
+                            <option>Bihar</option>
+                            <option>Punjab</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Jharkhand</option>
+                            <option>Nagaland</option>
+                            <option>Meghalaya</option>
+                            <option>Mizoram</option>
+                            <option>others</option>
+                        </select>
+                    </p>
 
-            <p>Country:
-                <span class="required">*</span>
-                <select required>
-                    <option>India</option>
-                    <option>other</option>
-                </select>
-            </p>
-            <hr>
-            <p>Email:
-                <span class="required">*</span>
-                <input type="text" placeholder="Enter Email Id" required>
-            </p>
-            <p>Password:
-                <span class="required">*</span>
-                <input type="password" placeholder="Enter Password" required>
-            </p>
+                    <p>Country:
+                        <span class="required">*</span>
+                        <select required>
+                            <option>India</option>
+                            <option>other</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="secondColumn">
+                    <p>Email:
+                        <span class="required">*</span>
+                        <input type="text" placeholder="Enter Email Id" required>
+                    </p>
+                    <p>Password:
+                        <span class="required">*</span>
+                        <input type="password" placeholder="Enter Password" required>
+                    </p>
 
-            <p>Confirm-Password:
-                <span class="required">*</span>
-                <input type="password" placeholder="Re-enter password" required>
-            </p>
+                    <p>Confirm-Password:
+                        <span class="required">*</span>
+                        <input type="password" placeholder="Re-enter password" required>
+                    </p>
 
-            <p>Subscribe newsletter?:
-                <select required>
-                    <option>yes</option>
-                    <option>no</option>
-                </select>
-            </p>
-
-            <button type="submit">Register</button>
-            <div id="note">* fields are mandatory</div>
-        </form>
-
+                    <p>Subscribe newsletter?:
+                        <select required>
+                            <option>yes</option>
+                            <option>no</option>
+                        </select>
+                    </p>
+                </div>
+                <button type="submit">Register</button>
+                <div id="note">* fields are mandatory</div>
+            </form>
+        </div>
     </div>
 </body>
 

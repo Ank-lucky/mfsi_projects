@@ -5,107 +5,108 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body style="background: linear-gradient(to bottom right, lightblue, lightgreen);">
+<body style="background: rgb(16, 20, 41);">
     <div id="regForm">
-        <h1 style="color:rgb(75, 162, 196);text-align: center">Registration Form</h1>
-        <form style=" display: block;border-bottom: 4px;border-right:4px;padding: 10px; width:60%; margin-left:20%;margin-right:20%;background-color:whitesmoke;"
-            onsubmit="clicked()">
-            <p>First Name:
-                <span class="required" style="color:red">*</span>
-                <input type="text" placeholder="Enter Firstname" required style=" float: right;width: 30%;margin: 2px 150;">
-            </p>
-            <p>Last Name:
-                <span class="required" style="color:red">*</span>
-                <input type="text" placeholder="Enter Lastname" required style=" float: right;width: 30%;margin: 2px 150;">
-            </p>
-            <p>Email:
-                <span class="required" style="color:red">*</span>
-                <input type="text" placeholder="Enter Email" required style=" float: right;width: 30%;margin: 2px 150;">
-            </p>
-            <p>Password:
-                <span class="required" style="color:red">*</span>
-                <input type="password" placeholder="Enter Password" required style=" float: right;width: 30%;margin: 2px 150;">
-            </p>
-            <p>Confirm-Password:
-                <span class="required" style="color:red">*</span>
-                <input type="password" placeholder="Re-enter password" required style=" float: right;width: 30%;margin: 2px 150;">
-            </p>
-            <p>Gender:
-                <span class="required" style="color:red">*</span>
-                <select required style=" float: right;width: 30%;margin: 2px 150;">
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
-                <p>Phone 1:
+        <h1 style="color:whitesmoke;text-align: center">Registration Form</h1>
+        <div style="display:flex;flex-direction: column;justify-content: center; align-items: center;">
+            <form style=" display: block;border-bottom: 4px;border-right:4px;padding: 10px;background-color:whitesmoke;">
+                <p>First Name:
                     <span class="required" style="color:red">*</span>
-                    <input type="text" placeholder="Phone No" required style=" float: right;width: 30%;margin: 2px 150;">
+                    <input type="text" placeholder="Enter Firstname" required style=" float: right;width: 30%;margin: 2px 150;">
                 </p>
-                <p>Phone 2:
-                    <input type="text" placeholder="Alternate Phone No" style=" float: right;width: 30%;margin: 2px 150;">
-                </p>
-                <p>Address 1:
+                <p>Last Name:
                     <span class="required" style="color:red">*</span>
-                    <input type="text" required style=" float: right;width: 30%;margin: 2px 150;">
+                    <input type="text" placeholder="Enter Lastname" required style=" float: right;width: 30%;margin: 2px 150;">
                 </p>
-                <p>Address 2:
-                    <input type="text" style=" float: right;width: 30%;margin: 2px 150;">
-                </p>
-                <p>City:
+                <p>Email:
                     <span class="required" style="color:red">*</span>
-                    <input type="text" required style=" float: right;width: 30%;margin: 2px 150;">
+                    <input type="text" placeholder="Enter Email" required style=" float: right;width: 30%;margin: 2px 150;">
                 </p>
-                <p>State:
+                <p>Password:
+                    <span class="required" style="color:red">*</span>
+                    <input type="password" placeholder="Enter Password" required style=" float: right;width: 30%;margin: 2px 150;">
+                </p>
+                <p>Confirm-Password:
+                    <span class="required" style="color:red">*</span>
+                    <input type="password" placeholder="Re-enter password" required style=" float: right;width: 30%;margin: 2px 150;">
+                </p>
+                <p>Gender:
                     <span class="required" style="color:red">*</span>
                     <select required style=" float: right;width: 30%;margin: 2px 150;">
-                        <option>Delhi</option>
-                        <option>Uttar Pradesh</option>
-                        <option>Tamil Nadu</option>
-                        <option>Jammu Kashmir</option>
-                        <option>Odisha</option>
-                        <option>Uttrakhand</option>
-                        <option>Rajasthan</option>
-                        <option>Karnataka</option>
-                        <option>Gujurat</option>
-                        <option>Madhya Pradesh</option>
-                        <option>West Bengal</option>Sikkim
-                        <option>Chhattisgarh</option>
-                        <option>Manipur</option>
-                        <option>Kerela</option>
-                        <option>Maharashtra</option>
-                        <option>Goa</option>
-                        <option>Harayana</option>
-                        <option>Assam</option>
-                        <option>Himachal Pradesh</option>
-                        <option>Tripura</option>
-                        <option>Arunachal Pradesh</option>
-                        <option>Telengana</option>
-                        <option>Bihar</option>
-                        <option>Punjab</option>
-                        <option>Andhra Pradesh</option>
-                        <option>Jharkhand</option>
-                        <option>Nagaland</option>
-                        <option>Meghalaya</option>
-                        <option>Mizoram</option>
-                        <option>others</option>
+                        <option>Male</option>
+                        <option>Female</option>
                     </select>
-                </p>
-                <p>Country:
-                    <span class="required" style="color:red">*</span>
-                    <select required style=" float:right;width: 30%;margin: 2px 150;">
-                        <option>India</option>
-                        <option>other</option>
-                    </select>
-                </p>
+                    <p>Phone 1:
+                        <span class="required" style="color:red">*</span>
+                        <input type="text" placeholder="Phone No" required style=" float: right;width: 30%;margin: 2px 150;">
+                    </p>
+                    <p>Phone 2:
+                        <input type="text" placeholder="Alternate Phone No" style=" float: right;width: 30%;margin: 2px 150;">
+                    </p>
+                    <p>Address 1:
+                        <span class="required" style="color:red">*</span>
+                        <input type="text" required style=" float: right;width: 30%;margin: 2px 150;">
+                    </p>
+                    <p>Address 2:
+                        <input type="text" style=" float: right;width: 30%;margin: 2px 150;">
+                    </p>
+                    <p>City:
+                        <span class="required" style="color:red">*</span>
+                        <input type="text" required style=" float: right;width: 30%;margin: 2px 150;">
+                    </p>
+                    <p>State:
+                        <span class="required" style="color:red">*</span>
+                        <select required style=" float: right;width: 30%;margin: 2px 150;">
+                            <option>Delhi</option>
+                            <option>Uttar Pradesh</option>
+                            <option>Tamil Nadu</option>
+                            <option>Jammu Kashmir</option>
+                            <option>Odisha</option>
+                            <option>Uttrakhand</option>
+                            <option>Rajasthan</option>
+                            <option>Karnataka</option>
+                            <option>Gujurat</option>
+                            <option>Madhya Pradesh</option>
+                            <option>West Bengal</option>Sikkim
+                            <option>Chhattisgarh</option>
+                            <option>Manipur</option>
+                            <option>Kerela</option>
+                            <option>Maharashtra</option>
+                            <option>Goa</option>
+                            <option>Harayana</option>
+                            <option>Assam</option>
+                            <option>Himachal Pradesh</option>
+                            <option>Tripura</option>
+                            <option>Arunachal Pradesh</option>
+                            <option>Telengana</option>
+                            <option>Bihar</option>
+                            <option>Punjab</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Jharkhand</option>
+                            <option>Nagaland</option>
+                            <option>Meghalaya</option>
+                            <option>Mizoram</option>
+                            <option>others</option>
+                        </select>
+                    </p>
+                    <p>Country:
+                        <span class="required" style="color:red">*</span>
+                        <select required style=" float:right;width: 30%;margin: 2px 150;">
+                            <option>India</option>
+                            <option>other</option>
+                        </select>
+                    </p>
 
-                <p>Subscribe newletter? :
-                    <select required style=" float: right; width: 30%;margin: 2px 150;">
-                        <option>yes</option>
-                        <option>no</option>
-                    </select>
-                </p>
-                <button type="submit" style="background-color:rgb(75, 162, 196);height: 40px;width:90px ;font-size:20px;margin:2 300">Register</button>
-                <p style="color:red ;float:right;">* fields are mandatory</p>
-        </form>
+                    <p>Subscribe newletter? :
+                        <select required style=" float: right; width: 30%;margin: 2px 150;">
+                            <option>yes</option>
+                            <option>no</option>
+                        </select>
+                    </p>
+                    <button type="submit" style="background-color:rgb(75, 162, 196);height: 40px;width:90px ;font-size:20px;margin:2 300">Register</button>
+                    <p style="color:red ;float:right;">* fields are mandatory</p>
+            </form>
+        </div>
     </div>
 </body>
 
