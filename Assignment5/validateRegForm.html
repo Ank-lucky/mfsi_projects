@@ -1,12 +1,12 @@
 <html>
-
 <head>
     <title>Reward Registeration Form</title>
     <link rel="stylesheet" href="CSS/validateRegForm.css">
+    <script rel="text/javascript" src="JS/jquery-1.12.4.min.js"></script>
     <script rel="text/javascript" src="JS/validateRegForm.js"></script>
-</head>
+    
 
-<body>
+<body onload="captcha();">
         <div class="MainContainer">
             <div class="FirstSection">
                 <h1>Register here</h1>
@@ -15,69 +15,70 @@
             </div>
 
             <div class="SecondSection">
-                <form method="POST" action="#" onsubmit="return validate()">
+                <form method="POST" action="www.google.com" name="regForm" onsubmit="return validate()">
                     <div class="PersonalDetails">
                         <fieldset>
                             <legend>Personal Details</legend>
 
                             <label>First Name:
                                 <span class="required">*</span>
-                                <input type="text" placeholder="firstname" id="fname"> </label>
-                            <span id="showError1"></span>
+                                <input type="text" placeholder="Firstname" id="firstName"> </label>
+                                <span id="showErrorfName" class="ErrorMsg"></span>
 
                             <label>Last Name:
                                 <span class="required">*</span>
-                                <input type="text" placeholder="lastname" id="lname">
+                                <input type="text" placeholder="LastName" id="lastName">
                             </label>
-                            <span id="showError2"></span>
+                                <span id="showErrorlName" class="ErrorMsg"></span>
 
                             <label>Gender:
                                 <span class="required">*</span>
                                 <div class="radioButtons">
-                                    <input  type="radio" name="gender" value="male" id="gender1">Male
-                                    <input type="radio" name="gender" value="female" id="gender2">Female
-                                    <input type="radio" name="gender" value="other" id="gender3">Others
+                                    <input  type="radio" name="gender" value="male" id="genderMale">Male
+                                    <input type="radio" name="gender" value="female" id="genderFemale">Female
                                 </div>
                             </label>
+                                 <span id="showErrorGender" class="ErrorMsg"></span>
 
                             <label>Phone 1:
                                 <span class="required">*</span>
                                 <input type="text" placeholder="Phone No" id="phoneNo">
                             </label>
+                            <span id="showErrorPhoneNo" class="ErrorMsg"></span>
 
                             <label>Phone 2:
                                 <input type="text" placeholder="Alternate Phone No" id="altPhoneNo">
                             </label>
+                            <span id="showErrorAltPhoneNo" class="ErrorMsg"></span>
 
                             <label>Address 1:
                                 <span class="required">*</span>
-                                <input type="text" id="address">
+                                <input type="text" id="address" placeholder="Enter current address">
                             </label>
+                            <span id="showErrorAddress" class="ErrorMsg"></span>
+
 
                             <label>Address 2:
-                                <input type="text">
+                                <input type="text" placeholder="Enter permanent address">
                             </label>
 
                             <label>City:
                                 <span class="required">*</span>
-                                <input type="text" id="city">
+                                <input type="text" id="city" placeholder="Enter City name">
                             </label>
+                            <span id="showErrorCity" class="ErrorMsg"></span>
 
                             <label>State:
                                 <span class="required">*</span>
-                                <select id="state">
-                                    <option>a</option>
-                                    <option>b</option>
-                                </select>
+                                <select id="state"> </select>
                             </label>
+                            <span id="showErrorState" class="ErrorMsg"></span>
 
                             <label>Country:
-                                <span class="required" id="country">*</span>
-                                <select>
-                                    <option>India</option>
-                                    <option>other</option>
-                                </select>
+                                <span class="required" >*</span>
+                                <select id="country"></select>
                             </label>
+                            <span id="showErrorCountry" class="ErrorMsg"></span>
                             <!-- <button class="btn" onclick="enterMoreFields()">Next</button> -->
 
                         </fieldset>
@@ -87,17 +88,21 @@
                             <legend>Authentication Details</legend>
                             <label>Email:
                                 <span class="required">*</span>
-                                <input class="hidden" type="text" placeholder="Email" id="email">
+                                <input type="text" placeholder="Ex:you@example.com" id="email">
                             </label>
+                            <span id="showErrorEmail" class="ErrorMsg"></span>
+                            
                             <label>Password:
                                 <span class="required">*</span>
-                                <input class="hidden" type="password" placeholder="Enter Password" id="password">
+                                <input  type="password" placeholder="Enter Password" id="password">
                             </label>
+                            <span id="showErrorPassword" class="ErrorMsg"></span>
 
                             <label>Confirm-Password:
                                 <span class="required">*</span>
-                                <input class="hidden" type="password" placeholder="Re-enter password" id="confrmPassword">
+                                <input  type="password" placeholder="Re-enter password" id="confrmPassword">
                             </label>
+                            <span id="showErrorCnfPassword" class="ErrorMsg"></span>
                         </fieldset>
                     </div>
                     <div class="Subscription">
@@ -113,6 +118,12 @@
                         </fieldset>
                     </div>
                     <div class="lastFormRow">
+                        <div class="captcha" >
+                            <span id="leftOperand"></span>
+                            <span id="operator"></span>
+                            <span id="rightOperand"></span>=
+                            <input type="text" id="answer">
+                        </div>
                         <button class="btn" type="submit">Register</button>
                         <div id="note">* fields are mandatory</div>
                     </div>

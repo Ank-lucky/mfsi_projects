@@ -1,17 +1,15 @@
 
 .MainContainer{
-   /* width:100%;
-   height:80%; */
-   /* border:1px solid whitesmoke; */
    padding:5px;
    display:flex;
-   flex-wrap:wrap;
+   /* flex-wrap:wrap; */
 }
 .FirstSection{
     flex:1;
-    color: whitesmoke;
+    color: #f5f5f5;
     background: rgba(4, 6, 44, 0.808);
-    font-family: sans-serif;
+    font-family:Georgia, Times, 'Times New Roman', serif;
+    padding: 100 10 50 10;
 }
 .SecondSection{
        flex:2;
@@ -59,32 +57,25 @@ input[type=radio]{
    color: rgba(4, 6, 44, 0.808);
 }
 .radioButtons{
-   margin-left:54%;
+   display:inline;
+   margin-left:45%;
    color: rgba(4, 6, 44, 0.808);
-}
-h1{
-   margin-top:40%;
-   margin-left:2%;
-   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-   font-size:200%;
-   color:rgb(210, 203, 203);
 }
 i{
    margin-left:5%;
    font-size:1.5em;
-   color: rgb(210, 203, 203);
-}
+} 
 
 body{
    margin:0;
    padding:0;
    background:rgb(210, 203, 203);
 }
-
+/* 
 #image{
    width:30%;
    height:30%;
-}
+} */
 .btn{
    display:inline-block;
    padding: 5px 10px;
@@ -98,7 +89,7 @@ body{
    border-radius: 5px;
    border:none;
    box-shadow: 0 9px rgba(4, 6, 44, 0.397);
-   margin-left:60%;
+   margin-left:25%;
    margin-top:5%;
    
 }
@@ -112,7 +103,7 @@ body{
 }
 
 #note{
-   color:red;
+   color:#ff0000;
 }
 label{
    color:rgba(4, 6, 44, 0.808);
@@ -120,15 +111,29 @@ label{
    padding:2%;
 }
 footer{
-    /* height:20%;
-    width:100%; */
     background-color: rgba(4, 6, 44, 0.808);
-    padding: 10px;
+    padding: 0;
     text-align: center;
     color: white;
  }
-
-
+ .ErrorMsg{
+     margin-left:55%;
+     font-size:0.8em;
+     color:#ff0000;
+ }
+.captcha{
+    /* padding-left: 30%; */
+    text-align:center;
+    font-weight:bold;
+    font-family:Modern;
+    display:inline;
+}
+#answer{  
+    width:20%;
+    float:left;
+    border:2px solid black;
+    border-radius: 5px;
+}
 @media only screen and (max-width:645px){
    .MainContainer{
        flex-direction:column;
@@ -139,5 +144,6 @@ footer{
    h1,i{
        margin:0;
    }
+   
    
 }
