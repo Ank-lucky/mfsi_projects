@@ -15,7 +15,7 @@
             </div>
 
             <div class="SecondSection">
-                <form method="POST" action="www.google.com" name="regForm" onsubmit="return validate()">
+                <form method="POST" action="#" name="regForm" onsubmit="return validate()">
                     <div class="PersonalDetails">
                         <fieldset>
                             <legend>Personal Details</legend>
@@ -34,8 +34,8 @@
                             <label>Gender:
                                 <span class="required">*</span>
                                 <div class="radioButtons">
-                                    <input  type="radio" name="gender" value="male" id="genderMale">Male
-                                    <input type="radio" name="gender" value="female" id="genderFemale">Female
+                                    <input  type="radio" name="gender" value="male" class="gender" id="genderMale">Male
+                                    <input type="radio" name="gender" value="female" class="gender" id="genderFemale">Female
                                 </div>
                             </label>
                                  <span id="showErrorGender" class="ErrorMsg"></span>
@@ -121,9 +121,11 @@
                         <div class="captcha" >
                             <span id="leftOperand"></span>
                             <span id="operator"></span>
-                            <span id="rightOperand"></span>=
-                            <input type="text" id="answer">
+                            <span id="rightOperand"></span>= 
+                            <input type="text" value="--" id="answer">
+                            <img src="images/img.jpg" id="image" onclick="captcha();">
                         </div>
+    
                         <button class="btn" type="submit">Register</button>
                         <div id="note">* fields are mandatory</div>
                     </div>

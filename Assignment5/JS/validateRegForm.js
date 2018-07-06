@@ -1,76 +1,74 @@
+var result;
+var firstBlankField = true;
+
 /*country dropdown */
-$.getJSON("JSON/countries.json",function(data){
-    console.log(data);
+$.getJSON("JSON/countries.json", function (data) {
     $('#country').html('');
-     var option;
-     option='<option id="none">Select Country</option>';
-    for(var i=0;i<data['country'].length;i++){
-        console.log(data['country'][i]);
-        option +='<option id="'+data['country'][i]['id']+'">'+data['country'][i]['name']+'</option>';
-       
+    var option;
+    option = '<option id="none">Select Country</option>';
+    for (var i = 0; i < data['country'].length; i++) {
+        option += '<option id="' + data['country'][i]['id'] + '">'+
+        data['country'][i]['name'] + '</option>';
     }
     $('#country').html(option);
 });
-$.getJSON("JSON/states.json",function(data){
-    console.log(data);
+
+/*state dropdown */
+$.getJSON("JSON/states.json", function (data) {
     $('#state').html('');
-     var option;
-     option='<option id="none">Select State</option>';
-    for(var i=0;i<data['state'].length;i++){
-        option +='<option id="'+data['state'][i]['id']+'">'+data['state'][i]['name']+'</option>';
-       
+    var option;
+    option = '<option id="none">Select State</option>';
+    for (var i = 0; i < data['state'].length; i++) {
+        option += '<option id="' + data['state'][i]['id'] + '">'+
+         data['state'][i]['name'] + '</option>';
     }
     $('#state').html(option);
 });
 
- /*Captcha */
- function captcha(){
-        let arr_operator=['+','-','/','*'];
-        let leftOperand=Math.floor(Math.random()*Math.floor(100));
-        let rightOperand=Math.floor(Math.random()*Math.floor(100));
-        let operator = arr_operator[Math.floor(Math.random()*Math.floor(4))]; 
-        console.log(leftOperand,rightOperand,operator);
-        document.getElementById('leftOperand').innerHTML=leftOperand;
-        while(operator == '/'){
-        if(rightOperand == 0){
-            operator = arr_operator[Math.floor(Math.random()*Math.floor(4))]; 
-        }else if((leftOperand % rightOperand) != 0 ){
-            operator = arr_operator[Math.floor(Math.random()*Math.floor(4))]; 
-        }else{
+/*Captcha */
+function captcha() {
+    let arr_operator = ['+', '-', '/', '*'];
+    let leftOperand = Math.floor(Math.random() * Math.floor(100));
+    let rightOperand = Math.floor(Math.random() * Math.floor(100));
+    let operator = arr_operator[Math.floor(Math.random() * Math.floor(4))];
+    document.getElementById('leftOperand').innerHTML = leftOperand;
+    while (operator == '/') {
+        if (rightOperand == 0) {
+            operator = arr_operator[Math.floor(Math.random() * Math.floor(4))];
+        } else if ((leftOperand % rightOperand) != 0) {
+            operator = arr_operator[Math.floor(Math.random() * Math.floor(4))];
+        } else {
             break;
         }
-        }
-        document.getElementById('rightOperand').innerHTML=rightOperand;
-        document.getElementById('operator').innerHTML=operator;
-        switch(operator){
-            case '+':
-                        result=leftOperand + rightOperand;
-                        break;
-                      
-            case '-':
-                        result=leftOperand + rightOperand;
-                        break;
-                        
-            case '/':
-                        result=leftOperand + rightOperand;
-                        break;
-                     
-            case '*':
-                        result=leftOperand + rightOperand;
-                        break;
-            default:
-                        console.log("invalid operator");
-        }
-        console.log("result",result);
- }
+    }
+    document.getElementById('rightOperand').innerHTML = rightOperand;
+    document.getElementById('operator').innerHTML = operator;
+    switch (operator) {
+        case "+":
+            this.result = leftOperand + rightOperand;
+            break;
 
- /*validate */
+        case "-":
+            this.result = leftOperand - rightOperand;
+            break;
+
+        case "/":
+            this.result = leftOperand / rightOperand;
+            break;
+
+        case "*":
+            this.result = leftOperand * rightOperand;
+            break;
+        default:
+            console.log("invalid operator");
+    }
+}
+
+/*validate */
 function validate() {
     var firstName = document.getElementById("firstName").value;
     var lastName = document.getElementById("lastName").value;
-    // var gender = regForm.querySelectorAll('input[name="gender"]:checked');
-    var genderMale=document.getElementById('genderMale').checked;
-    var genderFemale=document.getElementById('genderFemale').checked;
+    var gender = regForm.querySelectorAll('input[name="gender"]:checked');
     var phoneNo = document.getElementById('phoneNo').value;
     var altPhoneNo = document.getElementById('altPhoneNo').value;
     var address = document.getElementById('address').value;
@@ -82,116 +80,115 @@ function validate() {
     var confrmPassword = document.getElementById('confrmPassword').value;
     var answer = document.getElementById('answer').value;
     flag = true;
-    firstBlankField = true;
-    // document.write("chekc");
-    console.log(genderMale+" "+genderFemale);
-   
+
+
     /*Regular expressions */
-    var regexName=/^[A-Za-z]*$/;
-    var regexPhoneNo=/\d{10}/;
-    var regexEmail=/[\w.]+@+[a-z]+\.+com/;
-    var regexPasskey=/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+    var regexName = /^[A-Za-z]*$/;
+    var regexPhoneNo = /\d{10}/;
+    var regexEmail = /[\w.]+@+[a-z]+\.+com/;
+    var regexPasskey = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
 
     /*Validations */
     if (firstName == "") {
-        displayErrors("showErrorfName", "firstName", 0, firstBlankField);
+        displayErrors("showErrorfName", "firstName", 0, this.firstBlankField);
         flag = false;
     } else if (firstName.length <= 3) {
-        displayErrors("showErrorfName", "firstName", 2, firstBlankField);
+        displayErrors("showErrorfName", "firstName", 2, this.firstBlankField);
         flag = false;
-    }else if(!regexName.test(firstName)){
-        displayErrors("showErrorfName", "firstName", 1, firstBlankField);
+    } else if (!regexName.test(firstName)) {
+        displayErrors("showErrorfName", "firstName", 1, this.firstBlankField);
         flag = false;
     }
     if (lastName == "") {
-        displayErrors("showErrorlName", "lastName", 0, firstBlankField);
+        displayErrors("showErrorlName", "lastName", 0, this.firstBlankField);
         flag = false;
-    }else if (firstName.length <= 3) {
-        displayErrors("showErrorlName", "lastName", 2, firstBlankField);
+    } else if (firstName.length <= 3) {
+        displayErrors("showErrorlName", "lastName", 2, this.firstBlankField);
         flag = false;
-    }else if(!regexName.test(lastName)){
-        displayErrors("showErrorlName", "lastName", 1, firstBlankField);
+    } else if (!regexName.test(lastName)) {
+        displayErrors("showErrorlName", "lastName", 1, this.firstBlankField);
         flag = false;
     }
-    // if((genderMale == false ) && (genderFemale == false)) {
-    //     displayErrors("showErrorGender", "gender", 0, firstBlankField);
+    if (!gender.length) {
+        // document.write("here");
+        // displayErrors("showErrorGender", "gender", 0, this.firstBlankField);
+        // document.write("stupid");
+        flag = false;
+        // document.write("here");
+    }
+    // if(!genderMale.checked && !genderFemale.checked) {
+    //     displayErrors("showErrorGender", "gender", 0, this.firstBlankField);
     //     flag = false;
     // }
     if (phoneNo == "") {
-        displayErrors("showErrorPhoneNo", "phoneNo", 0, firstBlankField);
-         flag = false;
+        displayErrors("showErrorPhoneNo", "phoneNo", 0, this.firstBlankField);
+        flag = false;
     }
-    else if(!regexPhoneNo.test(phoneNo) ){
-        displayErrors("showErrorPhoneNo", "phoneNo", 1, firstBlankField);
-         flag = false;
+    else if (!regexPhoneNo.test(phoneNo)) {
+        displayErrors("showErrorPhoneNo", "phoneNo", 1, this.firstBlankField);
+        flag = false;
     }
 
-    if(altPhoneNo !="" && (!regexPhoneNo.test(altPhoneNo))){
-        displayErrors("showErrorAltPhoneNo", "phoneNo", 1, firstBlankField);
+    if (altPhoneNo != "" && (!regexPhoneNo.test(altPhoneNo))) {
+        displayErrors("showErrorAltPhoneNo", "phoneNo", 1, this.firstBlankField);
         flag = false;
     }
     if (address == "") {
-        displayErrors("showErrorAddress", "address", 0, firstBlankField);
-         flag = false;
+        displayErrors("showErrorAddress", "address", 0, this.firstBlankField);
+        flag = false;
     }
     if (city == "") {
-        displayErrors("showErrorCity", "city", 0, firstBlankField);
-         flag = false;
+        displayErrors("showErrorCity", "city", 0, this.firstBlankField);
+        flag = false;
     }
     if (state == "Select State") {
-        displayErrors("showErrorState", "state", 0, firstBlankField);
-         flag = false;
+        displayErrors("showErrorState", "state", 0, this.firstBlankField);
+        flag = false;
     }
     if (country == "Select Country") {
-        displayErrors("showErrorCountry", "country", 0, firstBlankField);
-         flag = false;
+        displayErrors("showErrorCountry", "country", 0, this.firstBlankField);
+        flag = false;
     }
     if (email == "") {
-        displayErrors("showErrorEmail", "email", 0, firstBlankField);
-         flag = false;
-    }else if(!regexEmail.test(email)){
-        displayErrors("showErrorEmail", "email", 1, firstBlankField);
-         flag = false;
+        displayErrors("showErrorEmail", "email", 0, this.firstBlankField);
+        flag = false;
+    } else if (!regexEmail.test(email)) {
+        displayErrors("showErrorEmail", "email", 1, this.firstBlankField);
+        flag = false;
     }
     if (password == "") {
-        console.log('if');
-        displayErrors("showErrorPassword", "password", 0, firstBlankField);
-         flag = false;
-    }else if(!regexPasskey.test(password)){
-        console.log('else if');
-        displayErrors("showErrorPassword","password",1, firstBlankField);
-        flag=false;
+        displayErrors("showErrorPassword", "password", 0, this.firstBlankField);
+        flag = false;
+    } else if (!regexPasskey.test(password)) {
+
+        displayErrors("showErrorPassword", "password", 1, this.firstBlankField);
+        flag = false;
     }
-    else{
-        console.log('else');
+    else {
+
         if (confrmPassword == "") {
-            console.log('else1');
-            displayErrors("showErrorCnfPassword", "confrmPassword", 0, firstBlankField);
+
+            displayErrors("showErrorCnfPassword", "confrmPassword", 0, this.firstBlankField);
             flag = false;
-        }else if(password != confrmPassword){
-            displayErrors("showErrorCnfPassword", "confrmPassword", 1, firstBlankField);
+        } else if (password != confrmPassword) {
+            displayErrors("showErrorCnfPassword", "confrmPassword", 1, this.firstBlankField);
             flag = false;
         }
-   }
-   
-    // if(answer != "" && flag == true)
-    // {
-    //       document.getElementById('answer').innerHTML="*Enter captcha";
-    // }
-    // else if( answer != result){
-    //     document.getElementById('answer').innerHTML="*invalid captcha";
-    // }
-
-    if(flag == true)
-    {
-        alert("Registration done");
-       
     }
-    else{
-        return flag;
+    if (answer == "--" && flag == true) {
+        alert("Enter captcha");
+        flag = false;
     }
-   
+    else if (answer != "--" && answer != this.result) {
+        alert("Enter captcha correctly");
+        flag = false;
+    }
+    if (flag == true) {
+        alert("Registration complete");
+        flag = false;
+    }
+    return flag;
 }
 
 /*displayErrors will display the errors according to the 
@@ -237,35 +234,39 @@ function displayErrors(errorId, fieldId, typeOfError, firstBlankField) {
     },
     {
         id: "password",
-        error: ["*Please enter the password","*Password must be minimum 8 characters with atleast one letter,one number and one special character"]
+        error: ["*Please enter the password", "*Password must be minimum 8 characters with atleast one letter,one number and one special character"]
     },
     {
         id: "confrmPassword",
         error: ["*Please confirm the password", "*Passwords do not match"]
-    },
-
+    }
     ]
+
     let i = 0;
     errors.forEach(item => {
         if (item.id == fieldId) {
+            console.log("here", item.id);
+            console.log("errorId", errorId);
             while (i < item.error.length) {
                 if (typeOfError == i) {
+                    console.log(document.getElementById(errorId));
                     document.getElementById(errorId).innerHTML = item.error[i];
                     if (firstBlankField) {
                         document.getElementById(fieldId).focus();
                     }
-
                 }
                 i = i + 1;
             }
         }
-
     });
+    if (firstBlankField) {
+        this.firstBlankField = false;
+        console.log(this.firstBlankField);
+     }
 }
 
 
 /**gender
-* captcha
 *  Dynamic selection for country state city
 *  UI
 * optimised and clean code
