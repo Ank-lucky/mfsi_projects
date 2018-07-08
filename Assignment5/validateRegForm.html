@@ -1,18 +1,25 @@
 <html>
 <head>
     <title>Reward Registeration Form</title>
-    <link rel="stylesheet" href="CSS/validateRegForm.css">
+    <!--  <link rel="stylesheet" href="CSS/validateRegForm.css"> -->
+    <link rel="stylesheet" href="CSS/sample.css">
     <script rel="text/javascript" src="JS/jquery-1.12.4.min.js"></script>
     <script rel="text/javascript" src="JS/validateRegForm.js"></script>
     
 
 <body onload="captcha();">
+        <div class="header">
+            <div id="menu">GetRewards!!
+            </div>
+            <button id="register">Register Here
+            </button>
+        </div>
         <div class="MainContainer">
-            <div class="FirstSection">
+            <!-- <div class="FirstSection">
                 <h1>Register here</h1>
                 <i>and get exciting Rewards!!</i>
                 <!--<img id="image" src=""> -->
-            </div>
+            <!-- </div> --> 
 
             <div class="SecondSection">
                 <form method="POST" action="#" name="regForm" onsubmit="return validate()">
@@ -123,9 +130,9 @@
                             <span id="operator"></span>
                             <span id="rightOperand"></span>= 
                             <input type="text" value="--" id="answer">
-                            <img src="images/img.jpg" id="image" onclick="captcha();">
+                            <img src="images/refresh2.png" id="image" onclick="captcha();"> 
                         </div>
-    
+                
                         <button class="btn" type="submit">Register</button>
                         <div id="note">* fields are mandatory</div>
                     </div>
