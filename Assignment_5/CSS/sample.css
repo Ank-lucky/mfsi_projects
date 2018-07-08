@@ -1,0 +1,161 @@
+body{
+	/*margin:5% 20% 5% 20%;*/
+	background: linear-gradient(to left, black, gray);
+}	
+.header{
+	background: black;
+    margin-bottom: 5%;
+    height: 6%;
+    padding:2%;
+    display: flex;
+    border-bottom: 1px solid #222;
+}
+#menu,#register{
+	color:#ffffff;
+	font-size:25px;
+}
+
+#register{
+	color:#000;
+	margin-left: 70%;
+}
+.MainContainer{
+	margin: 0 20% 0 20%;
+}
+
+.SecondSection{
+	padding:2%;
+	/*height:100%;*/
+	display: flex;
+	flex-direction: column;
+	/*background-color: rgba(204, 219, 216, 0.92);*/
+	overflow-y: auto;
+	overflow-x: auto; 
+}
+.PersonalDetails{
+    flex:1;
+}
+.AuthenticationDetails{
+    flex:2;
+}
+.Subscription{
+    flex:3;
+}
+.lastFormRow{
+  display:flex;
+  justify-content:space-between;
+}
+.captchaContainer{
+	width:40%;
+}
+.captcha{
+	flex:1;
+	font-size:1.5em;
+	display:flex;
+	justify-content: space-evenly;
+    align-items: center;
+	height: 10%;
+	background-image: url("../images/captcha.jpeg");
+	margin: 2%;
+	
+}
+#answer{
+	width: 20%;
+	height:40%;
+}
+.btn
+{
+ 
+   margin-top: 2%;
+   height: 5%;
+   width: 30%;
+   font-size: 25px;
+   cursor: pointer;
+   text-align: center;
+   text-decoration: none;
+   outline: none;
+   color:#000;
+   background-color: #1e5f33;
+   border-radius: 5px;
+   border:none;
+   box-shadow: 0 10px #1ba247;
+
+}
+.btn:hover {
+   background-color:#47cf73;
+}
+.btn:active{
+   background-color: #1e5f33;
+   box-shadow:0 4px #1ba247;
+   transform: translateY(4px);
+}
+#register{
+	background-color: #47cf73;
+	border-radius: 5px;
+}	
+#note{
+	padding-left:2%;
+	color:red;
+}
+#image{
+    /*margin-left:2%;*/
+    width:15%;
+	margin-top:2%;
+}
+form{
+	font-style: 'Times New Roman', Times, serif;
+}
+label{
+	display: block;
+	font-size:1.2em;
+	padding-bottom: 2%;
+	color: #faebd7;
+}
+legend{
+	font-size:25px;
+	color:#faebd7;
+}
+input[type=text],[type=email],[type=password],select{
+	display: block;
+	height: 5%;
+    width: 60%;
+    margin: 2 0 0 0;
+    padding: 4% 0 0% 0;
+    border: none;
+	border-bottom: 2px solid rgba(4, 6, 44, 0.808); /*rgba(0, 89, 255, 0.63)*/
+	border-radius:5px;
+	padding:5px;
+} 
+.required{
+	color:red;
+}
+ .ErrorMsg{
+     font-size:1em;
+     color:#ff0000;
+ }
+ footer{
+    background-color: #000;
+    padding: 1%;
+    text-align: center;
+    color: white;
+    margin:0;
+ }
+ 
+ @media screen and (max-width:630px){
+	 .lastFormRow{
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	 }
+	.captchaContainer{
+			width:100%;
+		}
+	 .btn{
+		 height:5%;
+		 width:auto;
+	 }
+	 input[type=text],[type=email],[type=password],select{
+		 width:100%;
+	 }
+ }
