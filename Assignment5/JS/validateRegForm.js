@@ -13,7 +13,8 @@ $.getJSON("JSON/countries.json", function (data) {
     $('#country').html(option);
 });
 
-/*state dropdown */
+
+// /*state dropdown */
 $.getJSON("JSON/states.json", function (data) {
     $('#state').html('');
     var option;
@@ -66,6 +67,7 @@ function captcha() {
 
 /*validate */
 function validate() {
+    console.log("validate");
     var firstName = document.getElementById("firstName").value;
     var lastName = document.getElementById("lastName").value;
     var gender = regForm.querySelectorAll('input[name="gender"]:checked');
@@ -80,12 +82,12 @@ function validate() {
     var confrmPassword = document.getElementById('confrmPassword').value;
     var answer = document.getElementById('answer').value;
     flag = true;
-
+    
 
     /*Regular expressions */
     var regexName = /^[A-Za-z]*$/;
-    var regexPhoneNo = /\d{10}/;
-    var regexEmail = /[\w.]+@+[a-z]+\.+com/;
+    var regexPhoneNo = /^\d{10}$/g;
+    var regexEmail = /[\w.]+@+[a-z]+\.+[com|net|in]/;
     var regexPasskey = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
 
@@ -99,20 +101,29 @@ function validate() {
     } else if (!regexName.test(firstName)) {
         displayErrors("showErrorfName", "firstName", 1, this.firstBlankField);
         flag = false;
+    }else{
+        clearErrorDisplayed('showErrorfName');
     }
+
     if (lastName == "") {
         displayErrors("showErrorlName", "lastName", 0, this.firstBlankField);
         flag = false;
-    } else if (firstName.length <= 3) {
+    } else if (lastName.length <= 3) {
         displayErrors("showErrorlName", "lastName", 2, this.firstBlankField);
         flag = false;
     } else if (!regexName.test(lastName)) {
         displayErrors("showErrorlName", "lastName", 1, this.firstBlankField);
         flag = false;
+    }else{
+        clearErrorDisplayed('showErrorlName');
     }
+
     if (!gender.length) {
         displayErrors("showErrorGender", "gender", 0, this.firstBlankField);
         flag = false;
+    }
+    else{
+        clearErrorDisplayed('showErrorGender');
     }
     if (phoneNo == "") {
         displayErrors("showErrorPhoneNo", "phoneNo", 0, this.firstBlankField);
@@ -122,26 +133,38 @@ function validate() {
         displayErrors("showErrorPhoneNo", "phoneNo", 1, this.firstBlankField);
         flag = false;
     }
+    else{
+        clearErrorDisplayed('showErrorPhoneNo');
+    }
 
     if (altPhoneNo != "" && (!regexPhoneNo.test(altPhoneNo))) {
         displayErrors("showErrorAltPhoneNo", "phoneNo", 1, this.firstBlankField);
         flag = false;
-    }
+    } 
+
     if (address == "") {
         displayErrors("showErrorAddress", "address", 0, this.firstBlankField);
         flag = false;
+    } else{
+        clearErrorDisplayed('showErrorAddress');
     }
     if (city == "") {
         displayErrors("showErrorCity", "city", 0, this.firstBlankField);
         flag = false;
+    }else{
+        clearErrorDisplayed('showErrorCity');
     }
     if (state == "Select State") {
         displayErrors("showErrorState", "state", 0, this.firstBlankField);
         flag = false;
+    }else{
+        clearErrorDisplayed('showErrorState');
     }
     if (country == "Select Country") {
         displayErrors("showErrorCountry", "country", 0, this.firstBlankField);
         flag = false;
+    }else{
+        clearErrorDisplayed('showErrorCountry');
     }
     if (email == "") {
         displayErrors("showErrorEmail", "email", 0, this.firstBlankField);
@@ -149,24 +172,30 @@ function validate() {
     } else if (!regexEmail.test(email)) {
         displayErrors("showErrorEmail", "email", 1, this.firstBlankField);
         flag = false;
+    }else{
+        clearErrorDisplayed('showErrorEmail');
     }
     if (password == "") {
         displayErrors("showErrorPassword", "password", 0, this.firstBlankField);
         flag = false;
     } else if (!regexPasskey.test(password)) {
-
         displayErrors("showErrorPassword", "password", 1, this.firstBlankField);
         flag = false;
     }
     else {
-
+        clearErrorDisplayed('showErrorPassword');
         if (confrmPassword == "") {
 
             displayErrors("showErrorCnfPassword", "confrmPassword", 0, this.firstBlankField);
+           
             flag = false;
         } else if (password != confrmPassword) {
             displayErrors("showErrorCnfPassword", "confrmPassword", 1, this.firstBlankField);
             flag = false;
+        }
+        else{
+            
+            clearErrorDisplayed('showErrorCnfPassword');
         }
     }
     if (answer == "--" && flag == true) {
@@ -251,4 +280,9 @@ function displayErrors(errorId, fieldId, typeOfError, firstBlankField) {
         blankField.focus();
     }
 }
+/*Function to clear  */
+function clearErrorDisplayed(errorId){
+    document.getElementById(errorId).innerHTML = "";
+    this.firstBlankField=true;
 
+}
