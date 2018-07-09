@@ -1,0 +1,140 @@
+<html>
+
+<head>
+    <title>Reward Registeration Form</title>
+    <link rel="stylesheet" href="CSS/validateRegForm.css">
+    <script rel="text/javascript" src="JS/jquery-1.12.4.min.js"></script>
+    <script rel="text/javascript" src="JS/validateRegForm.js"></script>
+
+
+    <body onload="captcha();">
+        <div class="header">
+            <div id="menu">GetRewards!!
+            </div>
+            <button id="register">Register Here
+            </button>
+        </div>
+        <div class="MainContainer">
+            <div class="FirstSection">
+                <form method="POST" action="#" name="regForm" onsubmit="return validate()">
+                    <div class="PersonalDetails">
+                        <fieldset>
+                            <legend>Personal Details</legend>
+
+                            <label>First Name:
+                                <span class="required">*</span>
+                                <input type="text" placeholder="Firstname" id="firstName"> </label>
+                            <span id="showErrorfName" class="ErrorMsg"></span>
+
+                            <label>Last Name:
+                                <span class="required">*</span>
+                                <input type="text" placeholder="LastName" id="lastName">
+                            </label>
+                            <span id="showErrorlName" class="ErrorMsg"></span>
+
+                            <label>Gender:
+                                <span class="required">*</span>
+                                <div class="radioButtons">
+                                    <input type="radio" name="gender" value="male" class="gender" id="genderMale">Male
+                                    <input type="radio" name="gender" value="female" class="gender" id="genderFemale">Female
+                                </div>
+                            </label>
+                            <span id="showErrorGender" class="ErrorMsg"></span>
+
+                            <label>Phone 1:
+                                <span class="required">*</span>
+                                <input type="text" placeholder="Phone No" id="phoneNo">
+                            </label>
+                            <span id="showErrorPhoneNo" class="ErrorMsg"></span>
+
+                            <label>Phone 2:
+                                <input type="text" placeholder="Alternate Phone No" id="altPhoneNo">
+                            </label>
+                            <span id="showErrorAltPhoneNo" class="ErrorMsg"></span>
+
+                            <label>Address 1:
+                                <span class="required">*</span>
+                                <input type="text" id="address" placeholder="Enter current address">
+                            </label>
+                            <span id="showErrorAddress" class="ErrorMsg"></span>
+
+
+                            <label>Address 2:
+                                <input type="text" placeholder="Enter permanent address">
+                            </label>
+
+                            <label>City:
+                                <span class="required">*</span>
+                                <input type="text" id="city" placeholder="Enter City name">
+                            </label>
+                            <span id="showErrorCity" class="ErrorMsg"></span>
+
+                            <label>State:
+                                <span class="required">*</span>
+                                <select id="state"> </select>
+                            </label>
+                            <span id="showErrorState" class="ErrorMsg"></span>
+
+                            <label>Country:
+                                <span class="required">*</span>
+                                <select id="country"></select>
+                            </label>
+                            <span id="showErrorCountry" class="ErrorMsg"></span>
+                        </fieldset>
+                    </div>
+                    <div class="AuthenticationDetails">
+                        <fieldset>
+                            <legend>Authentication Details</legend>
+                            <label>Email:
+                                <span class="required">*</span>
+                                <input type="text" placeholder="Ex:you@example.com" id="email">
+                            </label>
+                            <span id="showErrorEmail" class="ErrorMsg"></span>
+
+                            <label>Password:
+                                <span class="required">*</span>
+                                <input type="password" placeholder="Enter Password" id="password">
+                            </label>
+                            <span id="showErrorPassword" class="ErrorMsg"></span>
+
+                            <label>Confirm-Password:
+                                <span class="required">*</span>
+                                <input type="password" placeholder="Re-enter password" id="confrmPassword">
+                            </label>
+                            <span id="showErrorCnfPassword" class="ErrorMsg"></span>
+                        </fieldset>
+                    </div>
+                    <div class="Subscription">
+                        <fieldset>
+                            <legend>Subscription</legend>
+                            <label>Subscribe newsletter?:
+                                <select>
+                                    <option>yes</option>
+                                    <option>no</option>
+                                </select>
+                            </label>
+
+                        </fieldset>
+                    </div>
+                    <div class="lastFormRow">
+                        <div class="captchaContainer">
+                            <div class="captcha">
+                                <span id="captchaExpression"></span>
+                                <input type="text" value="--" id="answer">
+                                <img src="images/refresh2.png" id="image" onclick="captcha();">
+                            </div>
+                            <div id="note">* fields are mandatory</div>
+                        </div>
+
+                        <button class="btn" type="submit">Register</button>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <footer>Mindfire Solutions</footer>
+
+    </body>
+
+</html>
