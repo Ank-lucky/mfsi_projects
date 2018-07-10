@@ -32,7 +32,7 @@ function captcha() {
     let leftOperand = Math.floor(Math.random() * Math.floor(100));
     let rightOperand = Math.floor(Math.random() * Math.floor(100));
     let operator = arr_operator[Math.floor(Math.random() * Math.floor(4))];
-    document.getElementById('captchaExpression').innerHTML = leftOperand + '  ' + operator + '   ' + rightOperand + '=';
+   
 
     while (operator == '/') {
         if (rightOperand == 0) {
@@ -43,7 +43,7 @@ function captcha() {
             break;
         }
     }
-
+ document.getElementById('captchaExpression').innerHTML = leftOperand + '  ' + operator + '   ' + rightOperand + '=';
     switch (operator) {
         case "+":
             this.result = leftOperand + rightOperand;
