@@ -118,13 +118,14 @@ function validate() {
         clearErrorDisplayed('showErrorlName');
     }
 
-    if (!gender.length) {
+   if(gender === 'Select Gender')
+    {
         displayErrors("showErrorGender", "gender", 0, this.firstBlankField);
-        flag = false;
+        this.flag=false
     }
-    else{
-        clearErrorDisplayed('showErrorGender');
-    }
+    if(gender != 'Select Gender'){
+            clearErrorDisplayed('showErrorGender');
+        }
     if (phoneNo == "") {
         displayErrors("showErrorPhoneNo", "phoneNo", 0, this.firstBlankField);
         flag = false;
