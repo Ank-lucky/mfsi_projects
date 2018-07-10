@@ -347,9 +347,13 @@ function validate(inputField) {
         if (!flag) {
             if (this.captchaResult != answer) {
                 console.log('this.captchaResult', this.captchaResult, answer);
-                $('#showErrorCaptcha').html("*Enter Captcha");
+                $('#showErrorCaptcha').html("*Enter Captcha Correctly");
                 focusField('#answer');
                 this.validated = false;
+            }
+            else{
+                 $('#showErrorCaptcha').html("");
+                 this.validated = false;
             }
         }
     }
