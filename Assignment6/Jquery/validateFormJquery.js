@@ -1,5 +1,5 @@
 validated = true; //global variable which becomes false if the form is not properly filled or validated
-captchaResult = '';
+captchaResult = ''; // variable to store the result of the captcha generated
 
 
 /*country dropdown*/
@@ -148,8 +148,6 @@ function validate(inputField) {
             }
             else {
                 $('#showErrorfName').html("");
-                this.validated = false;
-
             }
         }
 
@@ -176,7 +174,6 @@ function validate(inputField) {
             }
             else {
                 $('#showErrorlName').html("");
-                this.validated = false;
 
             }
         }
@@ -191,7 +188,7 @@ function validate(inputField) {
         }
         else {
             $('#showErrorGender').html("");
-            this.validated = false;
+           
         }
     }
     if (inputField === '#phoneNo') {
@@ -210,7 +207,7 @@ function validate(inputField) {
             }
             else {
                 $('#showErrorPhoneNo').html("");
-                this.validated = false;
+               
             }
         }
     }
@@ -224,7 +221,7 @@ function validate(inputField) {
         }
         else {
             $('#showErrorAltPhoneNo').html("");
-            this.validated = false;
+           
         }
     }
     if (inputField === '#address') {
@@ -237,7 +234,7 @@ function validate(inputField) {
         }
         if (!flag) {
             $('#showErrorAddress').html("");
-            this.validated = false;
+            
         }
 
     }
@@ -253,7 +250,7 @@ function validate(inputField) {
 
         if (!flag) {
             $('#showErrorCity').html("");
-            this.validated = false;
+           
         }
     }
 
@@ -267,7 +264,7 @@ function validate(inputField) {
         }
         if (!flag) {
             $('#showErrorState').html("");
-            this.validated = false;
+            
         }
     }
     if (inputField === '#country') {
@@ -280,7 +277,7 @@ function validate(inputField) {
         }
         if (!flag) {
             $('#showErrorCountry').html("");
-            this.validated = false;
+           
         }
     }
     if (inputField === '#email') {
@@ -299,14 +296,14 @@ function validate(inputField) {
             }
             else {
                 $('#showErrorEmail').html("");
-                this.validated = false;
+              
             }
         }
     }
     if (inputField === '#password') {
         var password = $('#password').val();
         let flag = isNotfilled('#password', password);
-        this.validated = false;
+        this.validated = !flag;
         if (flag) {
             focusField('#password');
         }
@@ -318,7 +315,7 @@ function validate(inputField) {
             }
             else {
                 $('#showErrorPassword').html("");
-                this.validated = false;
+                focusField('#confrmPassword');
 
                 $('#confrmPassword').focusout(() => {
 
@@ -336,8 +333,6 @@ function validate(inputField) {
                         }
                         else {
                             $('#showErrorCnfPassword').html("");
-                            this.validated = false;
-                            focusField('#answer');
                         }
                     }
                 })
@@ -361,7 +356,6 @@ function validate(inputField) {
             }
             else{
                  $('#showErrorCaptcha').html("");
-                 this.validated = false;
             }
         }
     }
@@ -369,8 +363,6 @@ function validate(inputField) {
 
 /*function which checks if any field is not filled */
 function isNotfilled(fieldId, fieldValue) {
-
-    console.log('fieldId', fieldId, 'fieldValue', fieldValue);
     if (fieldValue == "" || fieldValue == 'Select State' || fieldValue == 'Select Country' || fieldValue == '--') {
         switch (fieldId) {
             case '#firstName': $('#showErrorfName').html("*Please Enter First Name.");
@@ -420,6 +412,13 @@ function validateForm() {
     validate('#country');
     validate('#email');
     validate('#password');
-    // validate('#answer');
+    validate('#answer');
+    
+     if(this.validated){
+        alert("Registration Complete");
+        this.validated =false /*This is just used to stay on same page even after the registration is complete and 
+                                should be true in real when an action is defined for the form submission */
+    }
+
     return this.validated;
 }
