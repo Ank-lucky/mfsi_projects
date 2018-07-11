@@ -32,18 +32,20 @@ function captcha() {
     let leftOperand = Math.floor(Math.random() * Math.floor(100));
     let rightOperand = Math.floor(Math.random() * Math.floor(100));
     let operator = arr_operator[Math.floor(Math.random() * Math.floor(4))];
-   
+    
 
     while (operator == '/') {
         if (rightOperand == 0) {
+            console.log(operator);
             operator = arr_operator[Math.floor(Math.random() * Math.floor(4))];
-        } else if ((leftOperand % rightOperand) != 0) {
+        } else if ((leftOperand % rightOperand) > 0) {
+            console.log(operator);
             operator = arr_operator[Math.floor(Math.random() * Math.floor(4))];
-        } else {
+        }else{
             break;
         }
     }
- document.getElementById('captchaExpression').innerHTML = leftOperand + '  ' + operator + '   ' + rightOperand + '=';
+    document.getElementById('captchaExpression').innerHTML = leftOperand + '  ' + operator + '   ' + rightOperand + '=';
     switch (operator) {
         case "+":
             this.result = leftOperand + rightOperand;
@@ -70,7 +72,8 @@ function validate() {
     console.log("validate");
     var firstName = document.getElementById("firstName").value;
     var lastName = document.getElementById("lastName").value;
-    var gender = regForm.querySelectorAll('input[name="gender"]:checked');
+    // var gender = regForm.querySelectorAll('input[name="gender"]:checked');
+    var gender= document.getElementById("gender").value;
     var phoneNo = document.getElementById('phoneNo').value;
     var altPhoneNo = document.getElementById('altPhoneNo').value;
     var address = document.getElementById('address').value;
@@ -94,31 +97,31 @@ function validate() {
     /*Validations */
     if (firstName == "") {
         displayErrors("showErrorfName", "firstName", 0, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     } else if (firstName.length <= 3) {
         displayErrors("showErrorfName", "firstName", 2, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     } else if (!regexName.test(firstName)) {
         displayErrors("showErrorfName", "firstName", 1, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     }else{
         clearErrorDisplayed('showErrorfName');
     }
+    
 
     if (lastName == "") {
         displayErrors("showErrorlName", "lastName", 0, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     } else if (lastName.length <= 3) {
         displayErrors("showErrorlName", "lastName", 2, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     } else if (!regexName.test(lastName)) {
         displayErrors("showErrorlName", "lastName", 1, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     }else{
-        clearErrorDisplayed('showErrorlName');
+      clearErrorDisplayed('showErrorlName');
     }
-
-   if(gender === 'Select Gender')
+    if(gender === 'Select Gender')
     {
         displayErrors("showErrorGender", "gender", 0, this.firstBlankField);
         this.flag=false
@@ -128,11 +131,11 @@ function validate() {
         }
     if (phoneNo == "") {
         displayErrors("showErrorPhoneNo", "phoneNo", 0, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     }
     else if (!regexPhoneNo.test(phoneNo)) {
         displayErrors("showErrorPhoneNo", "phoneNo", 1, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     }
     else{
         clearErrorDisplayed('showErrorPhoneNo');
@@ -140,48 +143,48 @@ function validate() {
 
     if (altPhoneNo != "" && (!regexPhoneNo.test(altPhoneNo))) {
         displayErrors("showErrorAltPhoneNo", "phoneNo", 1, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     } 
 
     if (address == "") {
         displayErrors("showErrorAddress", "address", 0, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     } else{
         clearErrorDisplayed('showErrorAddress');
     }
     if (city == "") {
         displayErrors("showErrorCity", "city", 0, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     }else{
         clearErrorDisplayed('showErrorCity');
     }
     if (state == "Select State") {
         displayErrors("showErrorState", "state", 0, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     }else{
         clearErrorDisplayed('showErrorState');
     }
     if (country == "Select Country") {
         displayErrors("showErrorCountry", "country", 0, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     }else{
         clearErrorDisplayed('showErrorCountry');
     }
     if (email == "") {
         displayErrors("showErrorEmail", "email", 0, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     } else if (!regexEmail.test(email)) {
         displayErrors("showErrorEmail", "email", 1, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     }else{
         clearErrorDisplayed('showErrorEmail');
     }
     if (password == "") {
         displayErrors("showErrorPassword", "password", 0, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     } else if (!regexPasskey.test(password)) {
         displayErrors("showErrorPassword", "password", 1, this.firstBlankField);
-        flag = false;
+        this.flag = false;
     }
     else {
         clearErrorDisplayed('showErrorPassword');
@@ -189,29 +192,29 @@ function validate() {
 
             displayErrors("showErrorCnfPassword", "confrmPassword", 0, this.firstBlankField);
            
-            flag = false;
+            this.flag = false;
         } else if (password != confrmPassword) {
             displayErrors("showErrorCnfPassword", "confrmPassword", 1, this.firstBlankField);
-            flag = false;
+            this.flag = false;
         }
         else{
             
             clearErrorDisplayed('showErrorCnfPassword');
         }
     }
-    if (answer == "--" && flag == true) {
+    if (answer == "--" && this.flag == true) {
         alert("Enter captcha");
-        flag = false;
+        this.flag = false;
     }
     else if (answer != "--" && answer != this.result) {
         alert("Enter captcha correctly");
-        flag = false;
+        this.flag = false;
     }
-    if (flag == true) {
+    if (this.flag == true) {
         alert("Registration complete");
-        flag = false;
+        this.flag = false;
     }
-    return flag;
+    return this.flag;
 }
 
 /*displayErrors will display the errors according to the 
@@ -285,5 +288,4 @@ function displayErrors(errorId, fieldId, typeOfError, firstBlankField) {
 function clearErrorDisplayed(errorId){
     document.getElementById(errorId).innerHTML = "";
     this.firstBlankField=true;
-
 }
