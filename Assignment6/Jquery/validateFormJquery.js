@@ -30,8 +30,8 @@ $.getJSON("JSON/states.json", function (data) {
 /*Generates captcha */
 function captcha() {
     let arr_operator = ['+', '-', '/', '*'];
-    let leftOperand = Math.floor(Math.random() * Math.floor(10));
-    let rightOperand = Math.floor(Math.random() * Math.floor(10));
+    let leftOperand = Math.floor(Math.random() * Math.floor(100));
+    let rightOperand = Math.floor(Math.random() * Math.floor(100));
     let operator = arr_operator[Math.floor(Math.random() * Math.floor(4))];
 
 
@@ -41,6 +41,14 @@ function captcha() {
         } else if ((leftOperand % rightOperand) != 0) {
             operator = arr_operator[Math.floor(Math.random() * Math.floor(4))];
         } else {
+            break;
+        }
+    }
+     while (operator == '-'){
+        if(leftOperand<rightOperand){
+             leftOperand = Math.floor(Math.random() * Math.floor(100));
+        }
+        else{
             break;
         }
     }
