@@ -1,6 +1,6 @@
 validated = true; //global variable which becomes false if the form is not properly filled or validated
 captchaResult = ''; // variable to store the result of the captcha generated
-
+filled=[false,false,false,false,false,false,false,false,false,false,false,false,false,]
 
 /*country dropdown*/
 $.getJSON("JSON/countries.json", function (data) {
@@ -131,23 +131,26 @@ function validate(inputField) {
     if (inputField === '#firstName') {
         var firstName = $('#firstName').val();
         let flag = isNotfilled('#firstName', firstName);
-        this.validated = !flag;
+        this.filled[0]= !flag;
         if (flag) {
             focusField('#firstName');
         }
         if (!flag) {
             if (firstName.length <= 3) {
                 $('#showErrorfName').html("* Enter first name more than 3 letters");
-                this.validated = false;
+                // this.validated = false;
+                this.filled[0]=false;
                 focusField('#firstName');
             }
             else if (!regexName.test(firstName)) {
                 $('#showErrorfName').html("* Enter only letters");
-                this.validated = false;
+                // this.validated = false;
+                this.filled[0]=false;
                 focusField('#firstName');
             }
             else {
                 $('#showErrorfName').html("");
+                this.filled[0]=true;
             }
         }
 
@@ -156,7 +159,7 @@ function validate(inputField) {
     if (inputField === '#lastName') {
         var lastName = $('#lastName').val();
         let flag = isNotfilled('#lastName', lastName);
-        this.validated = !flag;
+        this.filled[1]= !flag;
         if (flag) {
             focusField('#lastName');
         }
@@ -164,17 +167,19 @@ function validate(inputField) {
 
             if (lastName.length <= 3) {
                 $('#showErrorlName').html("* Enter last name more than 3 letters");
-                this.validated = false;
+                // this.validated = false;
+                this.filled[1]=false;
                 focusField('#lastName');
             }
             else if (!regexName.test(lastName)) {
                 $('#showErrorlName').html("* Enter only letters");
-                this.validated = false;
+                // this.validated = false;
+                this.filled[1]=false;
                 focusField('#lastName');
             }
             else {
                 $('#showErrorlName').html("");
-
+                this.filled[1]=true;
             }
         }
 
@@ -183,18 +188,18 @@ function validate(inputField) {
     if (inputField === '.gender') {
         if (!$('input[name=gender]:checked').val()) {
             $('#showErrorGender').html("*Please enter gender");
-            this.validated = false;
+            this.filled[2]= false;
             focusField('#genderMale');
         }
         else {
             $('#showErrorGender').html("");
-           
+            this.filled[2]=true;
         }
     }
     if (inputField === '#phoneNo') {
         var phoneNo = $('#phoneNo').val();
         let flag = isNotfilled('#phoneNo', phoneNo);
-        this.validated = !flag;
+        this.filled[3]= !flag;
         if (flag) {
             focusField('#phoneNo');
         }
@@ -202,12 +207,13 @@ function validate(inputField) {
 
             if (!regexPhoneNo.test(phoneNo)) {
                 $('#showErrorPhoneNo').html("* Enter only valid 10 digit number");
-                this.validated = false;
+                // this.validated = false;
+                this.filled[3]=false;
                 focusField('#phoneNo');
             }
             else {
                 $('#showErrorPhoneNo').html("");
-               
+                this.filled[3]=true;
             }
         }
     }
@@ -216,25 +222,25 @@ function validate(inputField) {
         var altphoneNo = $('#altPhoneNo').val();
         if (!regexPhoneNo.test(altphoneNo) && altphoneNo != "") {
             $('#showErrorAltPhoneNo').html("* Enter only valid 10 digit number");
-            this.validated = false;
+            this.filled[4]= false;
             focusField('#altPhoneNo');
         }
         else {
             $('#showErrorAltPhoneNo').html("");
-           
+            this.filled[4]=true;
         }
     }
     if (inputField === '#address') {
         var address = $('#address').val();
 
         let flag = isNotfilled('#address', address);
-        this.validated = !flag;
+        this.filled[5] = !flag;
         if (flag) {
             focusField('#address');
         }
         if (!flag) {
             $('#showErrorAddress').html("");
-            
+            this.filled[5]=true;
         }
 
     }
@@ -243,14 +249,14 @@ function validate(inputField) {
         var city = $('#city').val();
 
         let flag = isNotfilled('#city', city);
-        this.validated = !flag;
+        this.filled[6] = !flag;
         if (flag) {
             focusField('#city');
         }
 
         if (!flag) {
             $('#showErrorCity').html("");
-           
+            this.filled[6]=true;
         }
     }
 
@@ -258,32 +264,32 @@ function validate(inputField) {
         var state = $('#state').val();
 
         let flag = isNotfilled('#state', state);
-        this.validated = !flag;
+        this.filled[7] = !flag;
         if (flag) {
             focusField('#state');
         }
         if (!flag) {
             $('#showErrorState').html("");
-            
+            this.filled[7]=true;
         }
     }
     if (inputField === '#country') {
         var country = $('#country').val();
 
         let flag = isNotfilled('#country', country);
-        this.validated = !flag;
+        this.filled[8]= !flag;
         if (flag) {
             focusField('#country');
         }
         if (!flag) {
             $('#showErrorCountry').html("");
-           
+            this.filled[8]=true;
         }
     }
     if (inputField === '#email') {
         var email = $('#email').val();
         let flag = isNotfilled('#email', email);
-        this.validated = !flag;
+        this.filled[9] = !flag;
         if (flag) {
             focusField('#email');
         }
@@ -291,48 +297,50 @@ function validate(inputField) {
 
             if (!regexEmail.test(email)) {
                 $('#showErrorEmail').html("* Enter valid email ex you@example.com");
-                this.validated = false;
+                this.filled[9] = false;
                 focusField('#email');
             }
             else {
                 $('#showErrorEmail').html("");
-              
+                this.filled[10]=true;
             }
         }
     }
     if (inputField === '#password') {
         var password = $('#password').val();
         let flag = isNotfilled('#password', password);
-        this.validated = !flag;
+        this.filled[10]= !flag;
         if (flag) {
             focusField('#password');
         }
         if (!flag) {
             if (!regexPasskey.test(password)) {
                 $('#showErrorPassword').html("*Password must be minimum 8 characters with atleast one letter,one number and one special character");
-                this.validated = false;
+                this.filled[10] = false;
                 focusField('#password');
             }
             else {
                 $('#showErrorPassword').html("");
+                this.filled[10]=true;
                 focusField('#confrmPassword');
 
                 $('#confrmPassword').focusout(() => {
 
                     var confrmPassword = $('#confrmPassword').val();
                     let flag = isNotfilled('#confrmPassword', confrmPassword);
-                    this.validated = !flag;
+                    this.filled[11] = !flag;
                     if (flag) {
                         focusField('#confrmPassword');
                     }
                     if (!flag) {
                         if (!regexPasskey.test(confrmPassword)) {
                             $('#showErrorCnfPassword').html("*Password must be minimum 8 characters with atleast one letter,one number and one special character");
-                            this.validated = false;
+                            this.filled[11]= false;
                             focusField('#confrmPassword');
                         }
                         else {
                             $('#showErrorCnfPassword').html("");
+                            this.filled[11]=true;
                         }
                     }
                 })
@@ -343,7 +351,7 @@ function validate(inputField) {
     if (inputField === '#answer') {
         var answer = $('#answer').val();
         var flag = isNotfilled('#answer', answer);
-        this.validated = !flag;
+        this.filled[12] = !flag;
         if (flag) {
             focusField('#answer');
         }
@@ -352,10 +360,11 @@ function validate(inputField) {
                 console.log('this.captchaResult', this.captchaResult, answer);
                 $('#showErrorCaptcha').html("*Enter Captcha Correctly");
                 focusField('#answer');
-                this.validated = false;
+                this.filled[12]= false;
             }
             else{
                  $('#showErrorCaptcha').html("");
+                 this.filled[12]=true;
             }
         }
     }
@@ -401,6 +410,7 @@ function focusField(fieldId) {
 
 /*function which gets called when submitted */
 function validateForm() {
+    this.validated=true;
     validate('#firstName');
     validate('#lastName');
     validate('#phoneNo');
@@ -413,11 +423,19 @@ function validateForm() {
     validate('#email');
     validate('#password');
     validate('#answer');
-    
+
+    console.log(' this.validated', this.validated);
+    for(var i=0;i<filled.length;i++){
+        if(filled[i]==false){
+            this.validated=false;
+            break;
+        }
+    }
+    console.log(' this.validated', this.validated);
      if(this.validated){
         alert("Registration Complete");
         this.validated =false /*This is just used to stay on same page even after the registration is complete and 
-                                should be true in real when an action is defined for the form submission */
+                                 should be true in real when an action is defined for the form submission */
     }
 
     return this.validated;
