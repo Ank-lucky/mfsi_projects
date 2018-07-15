@@ -1,34 +1,11 @@
 validated = true; //global variable which becomes false if the form is not properly filled or validated
 captchaResult = ''; // variable to store the result of the captcha generated
-filled=[false,false,false,false,false,false,false,false,false,false,false,false,false,]
+filled=[false,false,false,false,false,false,false,false,false,false,false,false,false]; /*array to check each field is filled properly or not*/
 
-/*country dropdown*/
-$.getJSON("JSON/countries.json", function (data) {
-    $('#country').html('');
-    var option;
-    option = '<option id="none">Select Country</option>';
-    for (var i = 0; i < data['country'].length; i++) {
-        option += '<option id="' + data['country'][i]['id'] + '">' +
-            data['country'][i]['name'] + '</option>';
-    }
-    $('#country').html(option);
-});
-
-
-/*state dropdown */
-$.getJSON("JSON/states.json", function (data) {
-    $('#state').html('');
-    var option;
-    option = '<option id="none">Select State</option>';
-    for (var i = 0; i < data['state'].length; i++) {
-        option += '<option id="' + data['state'][i]['id'] + '">' +
-            data['state'][i]['name'] + '</option>';
-    }
-    $('#state').html(option);
-});
 
 /*Generates captcha */
 function captcha() {
+
     let arr_operator = ['+', '-', '/', '*'];
     let leftOperand = Math.floor(Math.random() * Math.floor(100));
     let rightOperand = Math.floor(Math.random() * Math.floor(100));
@@ -73,7 +50,7 @@ function captcha() {
         default:
             console.log("invalid operator");
     }
-    console.log('this.captchaResult', this.captchaResult);
+    $('#answer').val("");
 
 }
 /*function to dynamically validate the input fields on focusout */
@@ -125,6 +102,7 @@ $(function () {
 function validate(inputField) {
     var regexName = /^[A-Za-z]*$/;
     var regexPhoneNo = /^\d{10}$/g;
+    var regexAddress = /^\S*$/
     var regexEmail = /[\w.]+@+[a-z]+\.+[com|net|in]/;
     var regexPasskey = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
@@ -167,13 +145,11 @@ function validate(inputField) {
 
             if (lastName.length <= 3) {
                 $('#showErrorlName').html("* Enter last name more than 3 letters");
-                // this.validated = false;
                 this.filled[1]=false;
                 focusField('#lastName');
             }
             else if (!regexName.test(lastName)) {
                 $('#showErrorlName').html("* Enter only letters");
-                // this.validated = false;
                 this.filled[1]=false;
                 focusField('#lastName');
             }
@@ -232,15 +208,20 @@ function validate(inputField) {
     }
     if (inputField === '#address') {
         var address = $('#address').val();
-
         let flag = isNotfilled('#address', address);
         this.filled[5] = !flag;
         if (flag) {
             focusField('#address');
         }
         if (!flag) {
+            if(!regexAddress.test(address)){
+                $('#showErrorAddress').html("*Enter your address correctly");
+                 this.filled[5]=false;
+            }
+            else{
             $('#showErrorAddress').html("");
             this.filled[5]=true;
+            }
         }
 
     }
@@ -357,7 +338,6 @@ function validate(inputField) {
         }
         if (!flag) {
             if (this.captchaResult != answer) {
-                console.log('this.captchaResult', this.captchaResult, answer);
                 $('#showErrorCaptcha').html("*Enter Captcha Correctly");
                 focusField('#answer');
                 this.filled[12]= false;
@@ -372,7 +352,7 @@ function validate(inputField) {
 
 /*function which checks if any field is not filled */
 function isNotfilled(fieldId, fieldValue) {
-    if (fieldValue == "" || fieldValue == 'Select State' || fieldValue == 'Select Country' || fieldValue == '--') {
+    if (fieldValue == "" || fieldValue == 'Select State' || fieldValue == 'Select Country' || fieldValue == 'Select City') {
         switch (fieldId) {
             case '#firstName': $('#showErrorfName').html("*Please Enter First Name.");
                 return true;
@@ -424,14 +404,12 @@ function validateForm() {
     validate('#password');
     validate('#answer');
 
-    console.log(' this.validated', this.validated);
     for(var i=0;i<filled.length;i++){
         if(filled[i]==false){
             this.validated=false;
             break;
         }
     }
-    console.log(' this.validated', this.validated);
      if(this.validated){
         alert("Registration Complete");
         this.validated =false /*This is just used to stay on same page even after the registration is complete and 
