@@ -296,7 +296,7 @@ function validate(inputField) {
         }
         if (!flag) {
             if (!regexPasskey.test(password)) {
-                $('#showErrorPassword').html("*Password must be minimum 8 characters with atleast one letter,one number and one special character");
+                $('#showErrorPassword').html("*Password must be minimum 8 characters with atleast one letter,one number and one special character except ^,_");
                 this.filled[10] = false;
                 focusField('#password');
             }
@@ -315,7 +315,7 @@ function validate(inputField) {
                     }
                     if (!flag) {
                         if (!regexPasskey.test(confrmPassword)) {
-                            $('#showErrorCnfPassword').html("*Password must be minimum 8 characters with atleast one letter,one number and one special character");
+                            $('#showErrorCnfPassword').html("*Password didn't match!");
                             this.filled[11]= false;
                             focusField('#confrmPassword');
                         }
