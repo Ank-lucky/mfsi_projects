@@ -1,31 +1,6 @@
 var result;
 var firstBlankField = true;
 
-/*country dropdown */
-$.getJSON("JSON/countries.json", function (data) {
-    $('#country').html('');
-    var option;
-    option = '<option id="none">Select Country</option>';
-    for (var i = 0; i < data['country'].length; i++) {
-        option += '<option id="' + data['country'][i]['id'] + '">' +
-            data['country'][i]['name'] + '</option>';
-    }
-    $('#country').html(option);
-});
-
-
-// /*state dropdown */
-$.getJSON("JSON/states.json", function (data) {
-    $('#state').html('');
-    var option;
-    option = '<option id="none">Select State</option>';
-    for (var i = 0; i < data['state'].length; i++) {
-        option += '<option id="' + data['state'][i]['id'] + '">' +
-            data['state'][i]['name'] + '</option>';
-    }
-    $('#state').html(option);
-});
-
 /*Captcha */
 function captcha() {
     let arr_operator = ['+', '-', '/', '*'];
@@ -42,6 +17,14 @@ function captcha() {
             console.log(operator);
             operator = arr_operator[Math.floor(Math.random() * Math.floor(4))];
         }else{
+            break;
+        }
+    }
+       while (operator == '-'){
+        if(leftOperand<rightOperand){
+             leftOperand = Math.floor(Math.random() * Math.floor(100));
+        }
+        else{
             break;
         }
     }
@@ -152,7 +135,7 @@ function validate() {
     } else{
         clearErrorDisplayed('showErrorAddress');
     }
-    if (city == "") {
+    if (city == "Select City") {
         displayErrors("showErrorCity", "city", 0, this.firstBlankField);
         this.flag = false;
     }else{
