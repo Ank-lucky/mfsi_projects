@@ -4,6 +4,7 @@
     <title>Reward Registeration Form</title>
     <link rel="stylesheet" href="CSS/validateRegForm.css">
     <script rel="text/javascript" src="JS/jquery-1.12.4.min.js"></script>
+     <script rel="text/javascript" src="JS/FetchCountriesStates.js"></script>
     <script rel="text/javascript" src="JS/validateRegForm.js"></script>
 
 
@@ -65,23 +66,24 @@
                                 <input type="text" placeholder="Enter permanent address">
                             </label>
 
-                            <label>City:
+                             <label>Country:
                                 <span class="required">*</span>
-                                <input type="text" id="city" placeholder="Enter City name">
+                                <select id="country"></select>
                             </label>
-                            <span id="showErrorCity" class="ErrorMsg"></span>
-
+                            <span id="showErrorCountry" class="ErrorMsg"></span>
+                            
                             <label>State:
                                 <span class="required">*</span>
                                 <select id="state"> </select>
                             </label>
                             <span id="showErrorState" class="ErrorMsg"></span>
-
-                            <label>Country:
+    
+                             <label>City:
                                 <span class="required">*</span>
-                                <select id="country"></select>
+                                <select id="city"> </select>
                             </label>
-                            <span id="showErrorCountry" class="ErrorMsg"></span>
+                            <span id="showErrorCity" class="ErrorMsg"></span>
+                           
                         </fieldset>
                     </div>
                     <div class="AuthenticationDetails">
