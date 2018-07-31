@@ -8,17 +8,21 @@
 		<cflock timeout=20 scope="Session" type="Readonly">
 			<cfquery name="sessionsCount">
 
-							Select AccountId from AccountDetails where SessionId= '#Session.sessionid#'
+							SELECT AccountId FROM AccountDetails WHERE SessionId= '#Session.sessionid#'
 
 			</cfquery>
 			<cfif sessionsCount.recordcount NEQ 0>
+
 				<cfquery name="checkIfSameUserLoggined">
-							Select AccountId from AccountDetails where EmailId=<cfqueryparam value="#arguments.emailOrUserName#" cfsqltype="cf_sql_varchar"/>
-												OR UserName= <cfqueryparam value="#arguments.emailOrUserName#" cfsqltype="cf_sql_varchar"/>
-							</cfquery>
+							SELECT AccountId
+							FROM AccountDetails
+							WHERE EmailId=<cfqueryparam value="#arguments.emailOrUserName#" cfsqltype="cf_sql_varchar"/>
+							OR UserName= <cfqueryparam value="#arguments.emailOrUserName#" cfsqltype="cf_sql_varchar"/>
+				</cfquery>
 				<cfif sessionsCount.AccountId NEQ checkIfSameUserLoggined.AccountId >
 					<cfreturn "true" />
 				</cfif>
+
 			</cfif>
 		</cflock>
 		<cfreturn "false" />

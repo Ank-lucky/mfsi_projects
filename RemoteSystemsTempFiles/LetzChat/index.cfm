@@ -311,7 +311,7 @@
 	</cfif>
 </cfif>
 <cfif isDefined("url.logout")>
-	<cfif "#url.logout#" EQ true>
+	<cfif url.logout EQ true>
 		<script>
 			<cfoutput>
 			document.getElementById("message").innerHTML="Thanx for using Letz Chat!";
@@ -326,10 +326,19 @@
 	</cfif>
 </cfif>
 <cfif isDefined("url.login")>
-	<cfif "#url.login#" EQ false>
+	<cfif url.login EQ false>
 		<script>
 			<cfoutput>
 			document.getElementById("message").innerHTML="Sorry,couldn't login because you have entered wrong username/password or someone in here is already logged in.";
+			</cfoutput>
+		</script>
+	</cfif>
+</cfif>
+<cfif isDefined("url.loginAgain")>
+	<cfif url.loginAgain EQ "true">
+		<script>
+			<cfoutput>
+			document.getElementById("message").innerHTML="Please Try to login again.";
 			</cfoutput>
 		</script>
 	</cfif>

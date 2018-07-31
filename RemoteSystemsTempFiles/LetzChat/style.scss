@@ -1,0 +1,161 @@
+$primary:       #65b1bf;
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: #f1f1f1;
+  color: #555;
+  font-family: sans-serif;
+  height: 100%;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: $primary;
+  transition: 0.3s;
+}
+p {
+  margin: 0 0 5px;
+}
+
+#wrapper {
+  display: flex;
+  height: 100%;
+}
+#content {
+  flex: 0 1 100%;
+  background-color: #eee;
+  padding: 15px;
+}
+#left-sidebar {
+  flex: 0 0 220px;
+  background-color: $primary;
+  padding: 5px;
+  .search {
+    position: relative;
+    .field  {
+      background-color: lighten($primary, 10%);
+      border-color: lighten($primary, 10%);
+      color: #fff;
+      &::-webkit-input-placeholder {
+        color: #fff;
+      }
+      &::-moz-placeholder {
+        color: #eee;
+      }
+      &:-ms-input-placeholder {
+        color: #eee;
+      }
+      &:-moz-placeholder {
+        color: #eee;
+      }
+    }
+    .btn {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.users-list {
+  > li {
+    ~ li {
+      border-top: 1px solid darken($primary, 10%);  
+    }
+    .avatar {
+      padding-right: 5px;
+      flex: 0 0 50px;
+    }
+    p {
+      margin: 0;
+    }
+    .status {
+     font-size: 0.8rem;
+     color: #ddd;
+    }
+    > a {
+      display: flex;
+      align-items: center;;
+      color: #fff;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      &:hover {
+        background-color: darken($primary, 5%);
+      }
+      img {
+        border-radius: 50%;
+        border: 1px solid #fff;
+        max-width: 100%;
+        height: auto;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+.user-message-container {
+  margin-bottom: 10px;
+  display: flex;
+}
+.user-message-avatar {
+  margin-right: 10px;
+  flex: 0 0 60px;
+  img {
+    border-radius: 50%;
+    max-width: 100%;
+    display: block;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.25);
+  }
+}
+.user-message {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.user-name {
+  display: block;
+  font-weight: 600;
+}
+.user-date {
+  display: block;
+  margin-top: 5px;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.field {
+  width: 100%;
+  display: block;
+  padding: 7px 10px;
+  line-height: 1.5;
+  outline: none;
+  transition: 0.3s;
+  border: 1px solid #ccc;
+}
+.btn {
+  display: inline-block;
+  padding: 7px 10px;
+  border: 1px solid #eee;
+  background-color: #eee;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background-color: darken(#eee, 10%);
+  }
+}

@@ -1,6 +1,6 @@
 <cfcomponent>
 
-	<cfset this.name="LetzChatzzzWebApp"/>
+	<cfset this.name="LetzChatWebApp"/>
 	<cfset this.applicationTimeout= createTimespan(0,2,0,0)/>
 	<cfset this.datasource="chatDb" />
 	<cfset this.sessionmanagement="yes" />
