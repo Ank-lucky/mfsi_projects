@@ -13,7 +13,10 @@
   <link rel="stylesheet" href="../CSS/chatPageStyle.css">
   <script src="../JS/jquery-1.12.4.min.js"></script>
   <script rel="text/javascript" src="../../Controller/UserProfile.js"></script>
-  <script rel="text/javascript" src="../JS/animate.js"></script>
+  <!--- <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"> --->
+  <!--- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> --->
+  <!--- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> --->
+
 
 </head>
 
@@ -32,7 +35,7 @@
 		</div>
 		<div id="profileUpdate">
 			<input  type="text" id="fullName" />
-			<input  type="text" id="emailId" />
+			<input  type="text" id="emailId" onkeyup="validatEmail()"/>
 			<input  type="text" id="gender" />
 			<input  type="text" id="address" />
 			<button id="updateButton" onclick="updateUserProfile();">Update</button>
@@ -63,75 +66,56 @@
     <div class="lastRow" >
       <div id="addContacts">
         <button class="lastRowButtons" id="addContactsBtn" >ADD CONTACTS</button>
-      </div>
+       </div>
       <div id="logout">
-        <button class="lastRowButtons">LOGOUT</button>
+        <button class="lastRowButtons"><a href="../../Controller/CF/Login.cfm?logout=true">LOGOUT</a></button>
       </div>
     </div>
   </aside>
   <main id="content">
-
+    <div class="chatHeader">
+      <img src="https://picsum.photos/65/65/">
+      <span id="friendName">Som..<span>
+    </div>
     <div class="user-message-container">
       <div class="user-message-avatar">
         <img src="https://picsum.photos/65/65/" alt="">
       </div>
       <div class="user-message">
-
-        <span class="user-name">Alex</span>
-
+        <span class="user-name">Som..</span>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         <span class="user-date">10.10.2018 14:20PM</span>
       </div>
     </div>
 
-    <div class="user-message-container">
-      <div class="user-message-avatar">
-        <img src="https://picsum.photos/66/66/" alt="">
-      </div>
-      <div class="user-message">
-
-        <span class="user-name">Mozart</span>
-
-        Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        <span class="user-date">10.10.2018 14:21PM</span>
-      </div>
-    </div>
-
-
-    <div class="user-message-container">
-      <div class="user-message-avatar">
-        <img src="https://picsum.photos/66/66/" alt="">
-      </div>
-      <div class="user-message">
-
-        <span class="user-name">Biba</span>
-        Ziga!!!
-
-        <span class="user-date">10.10.2018 14:22PM</span>
-      </div>
-    </div>
-
-
+    <div class="message-input">
+			<div class="wrap">
+			<input type="text" id="wrapInput" placeholder="Write your message..." />
+			<button class="submit"><i class="fa fa-paper-plane " aria-hidden="true"></i></button>
+			</div>
+		</div>
   </main>
 </div>
-  <div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="closed">
-          &times;
-        </span>
-        <h2>
-          Add Contact
-        </h2>
+
+ <!---Modal for add Contact--->
+ <div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Search And Add Contacts</h2>
+    </div>
+    <div class="modal-body">
+      <div class="example" style="margin:auto;max-width:300px">
+        <input type="text" placeholder="Enter UserName/EmailId" id="searchContact" onkeyup="searchToAddContact()">
+        <button type="button" onclick="searchToAddContact()"><i class="fa fa-search"></i></button>
       </div>
-      <div class="modal-body">
-        <!---Search bar and a list of contacts to be added, retrieve all those users--->
+      <div id="searchedContacts">
       </div>
     </div>
   </div>
-</body>
 
+</body>
+<script rel="text/javascript" src="../JS/animate.js"></script>
 </html>
 
 <cfelse>

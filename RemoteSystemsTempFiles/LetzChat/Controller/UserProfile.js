@@ -19,7 +19,7 @@ $(document).ready(function () {
 function handleUserDetail(details) {
 
 	console.log(JSON.parse(details));
-	var element = "";
+	element = "";
 	var userDetailsJson = JSON.parse(details);
 		if(userDetailsJson.MiddleName != "NULL")
 		document.getElementById("fullName").value = userDetailsJson.FirstName+" "+userDetailsJson.MiddleName+" "+userDetailsJson.LastName;
@@ -50,7 +50,7 @@ function handleUserDetail(details) {
 function updateUserProfile() {
 	console.log("update Profile");
 	var fullName = document.getElementById("fullName").value;
-	var emailId = document.getElementById("emailId").value;
+	// var emailId = document.getElementById("emailId").value;
 	var addr = document.getElementById("address").value;
 	var name = fullName.split(" ",3);
 	var address = addr.split(",", 3);
@@ -68,6 +68,8 @@ function updateUserProfile() {
 		lastName = name[1];
 	}
 	console.log(firstName,middleName,lastName,"emailId",emailId,address[2],address[1],address[0]);
+
+	if(validate(name,address)){
 	$.ajax({
 		url: "../../Model/Components/UserProfile.cfc",
 		data: {
@@ -76,47 +78,117 @@ function updateUserProfile() {
 			firstName: firstName,
 			middleName: middleName,
 			lastName: lastName,
-			emailId: emailId,
 			country: address[2],
 			state: address[1],
 			city: address[0]
 		},
-
-		dataType: 'json',
 		type: "POST",
 		success: function (response) {
-			console.log("resp", response);
-			if (response == true)
-				console.log("successUpdating");
+			console.log("resp",response);
+			if(response == true)
+			console.log("successUpdating");
 			else
-				console.log("failedInUpdating");
+			console.log("failedUpdating");
 		},
 		error: function(response){
 			console.log(response);
 		}
 	});
+	}
+	else{
+		return false;
+	}
 
+}
+/*Function to validate while updating user profile */
+function validate(name,address){
+	 console.log("validate",name[0],name[1],name[2],address[0],address[1],address[2]);
+	 var errMsg="";
+	if(name[0]==undefined || (name[1]=="NULL" && name[2]==undefined )|| name[0]==" " ||name[1]==" "){
+		errMsg = "Please Enter both FirstName and LastName";
+		document.getElementById("fullName").placeholder=errMsg;
+		alert(errMsg);
+		return false;
+	}
+	for(let ind=0;ind<address.length;ind++){
+		console.log("address[ind]",address[ind]);
+		if(address[ind] == ""|| address[ind] == " "){
+		console.log("address[ind]",address[ind]);
+		errMsg="Enter a proper city,state and country separated with comma and n space.";
+		alert(errMsg);
+		return false;
+		}
+	}
+	return true;
+	
+}
+function validatEmail(){
+	alert("You can't change your email-id");
 }
 
 /* Function to search for contacts to be added */
 function searchToAddContact() {
 	console.log("addContact");
-	var keyWord="Sonal"
+	var keyword=document.getElementById("searchContact").value;
+	console.log(keyword);
 	$.ajax({
-		url: "../../Model/Components/UserProfile.cfc",
+		url: "../../Model/Components/UserProfile.cfc?queryformat=column",
 		data: {
 			method: "searchToAddContact",
 			userId: accountId,
-			keyWord: keyWord
+			keyWord: keyword
 		},
-		dataType:'json',
 		type: "POST",
-		success: showSearchContactList
+		success: showSearchContactList,
+		error: function(response){
+			console.log("error",response);
+		}
 	});
 }
 function showSearchContactList(response){
+	response = $.parseJSON(response);
 	console.log(response);
+	var contactElement= "";
+	if(response.DATA.length != 0){
+		for(let i=0;i<response.DATA.length;i++){
+			contactElement+="<div style="+"display:flex;flex-direction:row;justify-content:space-between;padding:2%;"+"<p><strong>"+response.DATA[i][1]+"</strong></p><img id="+"addPeople"+" style="+"width:10%;height:5%;"+" src="+"../../View/images/addContact.png"+" onclick="+"addContact("+response.DATA[i][0]+")></div><hr>";
+		}
+		document.getElementById("searchedContacts").innerHTML=contactElement;
+	}
+	else
+	document.getElementById("searchedContacts").innerHTML="<p style="+"font-size:1.5em;color:#0e73b1c4"+"><strong>"+"Sorry,your searched contact is not found!"+"<strong></p>";
+
 }
-function chatFriend(friendDetails) {
-	console.log(friendDetails);
+//an add button to trigger addContact
+
+function addContact(friendId){
+	console.log("addContact",friendId);
+	$.ajax({
+		url: "../../Model/Components/UserProfile.cfc",
+		data: {
+			method: "addContact",
+			userId: accountId,
+			friendId: friendId
+		},
+		type: "POST",
+		success: function(resp){
+				 console.log("success",resp);
+				 location.reload(true);
+				//  if(resp == true){
+				// 	element +="<li id="+"list"+"><div class="+"friend"+"><p><strong>"+userName+"<strong></p></div></li>"
+				// 	document.getElementById("contactList").innerHTML = element;
+				// }
+				
+		},
+		error: function(response){
+			console.log("error",response);
+		}
+	});
+}
+
+$(".friend").on('click',function(){
+	console.log("friend1");
+});
+function openChatRoom(userName){
+	// document.getElementById("friendName").innerHTML=userName;
 }

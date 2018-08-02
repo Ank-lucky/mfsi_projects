@@ -6,11 +6,14 @@
 		<cfset form.IsUserActive=1/>
 		<cfset form.ImagePath = expandPath('../../View/images/avatar-default-icon.png') />
 		<cfset Passkey=createObject("component","PasswordHashing").returnHashPassword("#form.Password#",'SHA1') />
+
 		<cftry>
 			<!---Query for storing address details  --->
 			<cfquery result="result" >
 	  			insert into Address(City,State,Country)
-	     			values('#form.City#','#form.State#','#form.Country#')
+	     			values(<cfqueryparam value='#form.City#' cfsqltype="cf_sql_varchar">,
+	     					<cfqueryparam value='#form.State#' cfsqltype="cf_sql_varchar">,
+	     					<cfqueryparam value='#form.Country#' cfsqltype="cf_sql_varchar">)
 	  		</cfquery>
 			<cfset datatime = CREATEODBCDATETIME( Now() ) />
 			<!---Query for storing User Details  --->
@@ -32,7 +35,9 @@
 					<cfqueryparam value='#form.Gender#' cfsqltype="cf_sql_varchar">,
 				 	<cfqueryparam value="#datatime#" cfsqltype="cf_sql_timestamp">)
 	 		</cfquery>
-			<cfcatch type="datbase"> <!---Incase of datebase errors--->
+			<cfcatch type="any">
+				<cfset message=cfcatch.cause.message />
+				<cflog type="Error" file="storeUserDetails" text="Exception error Exception type:#cfcatch.type# message:#message#" />
 				<cfreturn "false"/>
 			</cfcatch>
 		</cftry>
