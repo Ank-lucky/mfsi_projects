@@ -42,9 +42,10 @@ p {
 }
 
 #left-sidebar {
-  flex: 0 0 220px;
+  flex: 0 0 350px;
   background-color: #65b1bf;
   padding: 5px;
+  overflow-y: scroll;
 }
 #left-sidebar .search {
   position: relative;
@@ -166,9 +167,7 @@ p {
 .btn:hover {
   background-color: #d5d5d5;
 }
-#userProfile{
-  height:42%;
-}
+
 .userDisplay{
   display: flex;
   align-items: center;
@@ -177,7 +176,7 @@ p {
 #userProfile img
 {
   border-radius: 50%;
-  max-width:100%;
+  max-width:25%;
   margin-right:4%;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
 }
@@ -186,14 +185,25 @@ margin-top: 5%;
 padding: 2%;
 line-height: 2.5;
 }
-#updateButton{
-  
+#uploadPic{
+  display: block;
+  color: white;
+}
+#updateButton,#uploadBtn{
+  margin-top:2%;
   background-color: #555;
   color:white;
   border-radius: 12px;
   font-size:15px;
   text-decoration: none;
   cursor: pointer;
+  display:block;
+
+}
+#uploadBtn{
+  display: inline;
+  background-color: white;
+    color: black;
 }
 #list{
   margin-left:10%;
@@ -211,7 +221,7 @@ line-height: 2.5;
   position: absolute;
   bottom:0;
   height: 8%;
-  
+  width:340px;
   cursor: pointer;
   font-size: 0.85em;
   font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
@@ -364,4 +374,13 @@ position: relative;
 }
 #searchedContacts{
   padding:5%;
+}
+input[type=file]{
+  width: 60%;
+  background-color: white;
+  padding: 2% 2% 2% 0;
+}
+#profileUpdate input[type=text]{
+  padding:2%;
+  margin-top:2%;
 }

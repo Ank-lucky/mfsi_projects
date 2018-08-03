@@ -89,6 +89,7 @@ function updateUserProfile() {
 			console.log("successUpdating");
 			else
 			console.log("failedUpdating");
+			// location.reload(true);
 		},
 		error: function(response){
 			console.log(response);
@@ -100,19 +101,22 @@ function updateUserProfile() {
 	}
 
 }
+
 /*Function to validate while updating user profile */
 function validate(name,address){
 	 console.log("validate",name[0],name[1],name[2],address[0],address[1],address[2]);
 	 var errMsg="";
-	if(name[0]==undefined || (name[1]=="NULL" && name[2]==undefined )|| name[0]==" " ||name[1]==" "){
+	 regExpName=/[^\s][^\\s]*[^\s\s]*/;
+	if(name[0]==undefined || (name[1]=="NULL" && name[2]==undefined )|| name[0]===" " ||name[1]===" "){
 		errMsg = "Please Enter both FirstName and LastName";
 		document.getElementById("fullName").placeholder=errMsg;
 		alert(errMsg);
 		return false;
 	}
-	for(let ind=0;ind<address.length;ind++){
+	for(let ind=0;ind<3;ind++){
 		console.log("address[ind]",address[ind]);
-		if(address[ind] == ""|| address[ind] == " "){
+		regExp=/[^,\s][^\,]*[^,\s]*/;
+		if(address[ind] == ""|| address[ind] ==" " || address[ind] == undefined || !(regExp.test(address))){
 		console.log("address[ind]",address[ind]);
 		errMsg="Enter a proper city,state and country separated with comma and n space.";
 		alert(errMsg);
@@ -160,7 +164,6 @@ function showSearchContactList(response){
 
 }
 //an add button to trigger addContact
-
 function addContact(friendId){
 	console.log("addContact",friendId);
 	$.ajax({
@@ -186,9 +189,9 @@ function addContact(friendId){
 	});
 }
 
-$(".friend").on('click',function(){
-	console.log("friend1");
-});
+// $(".friend").on('click',function(){
+// 	console.log("friend1");
+// });
 function openChatRoom(userName){
 	// document.getElementById("friendName").innerHTML=userName;
 }

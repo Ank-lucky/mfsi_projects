@@ -1,5 +1,5 @@
 
-<cfif structKeyExists(Session,"loggedInUser") AND Session.loggedInUser.isUserLoggedIn EQ "true">
+<cfif structKeyExists(Session,"loggedInUser") AND Session.loggedInUser.isUserLoggedIn EQ true>
 <!---Template of the chat Room--->
 <!DOCTYPE html>
 <html lang="en" >
@@ -26,19 +26,27 @@
   <aside id="left-sidebar">
 	<div id="userProfile">
 		<div class="userDisplay">
-			<img  src="https://picsum.photos/71/71/" alt="">
+			<img  src="../images/avatar-default-icon.png" alt="ProfilePic">
 			<div id="userDesription">
 				<p id="userName"><cfoutput>#Session.loggedInUser.userName#</cfoutput></p>
 				<p id="status">Online</p>
-				<input type="hidden" id="userId" value=<cfoutput>#Session.loggedInUser.userId#</cfoutput>>
+        <input type="hidden" id="userId" value=<cfoutput>#Session.loggedInUser.userId#</cfoutput>>
+
 			</div>
 		</div>
-		<div id="profileUpdate">
+    <div id="profileUpdate">
+
 			<input  type="text" id="fullName" />
 			<input  type="text" id="emailId" onkeyup="validatEmail()"/>
 			<input  type="text" id="gender" />
-			<input  type="text" id="address" />
-			<button id="updateButton" onclick="updateUserProfile();">Update</button>
+      <input  type="text" id="address" />
+      <form action="../../Controller/CF/UploadDisplayPic.cfm" method="POST">
+      <label id="uploadPic">Upload Profile Picture:</label>
+		<input type="file" name="profilePic" id="profilePic" />
+      <button type="submit" name="uploadPicform" id="uploadBtn">Upload</button>
+      </form>
+      <button id="updateButton" onclick="updateUserProfile();">Update</button>
+
 		</div>
 	</div>
     <div class="search">
@@ -65,7 +73,7 @@
     </div>
     <div class="lastRow" >
       <div id="addContacts">
-        <button class="lastRowButtons" id="addContactsBtn" >ADD CONTACTS</button>
+        <button class="lastRowButtons" id="addContactsBtn"class="modalButtons">ADD CONTACTS</button>
        </div>
       <div id="logout">
         <button class="lastRowButtons"><a href="../../Controller/CF/Login.cfm?logout=true">LOGOUT</a></button>

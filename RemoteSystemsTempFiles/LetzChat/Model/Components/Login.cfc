@@ -20,7 +20,7 @@
 							   WHERE  EmailId=<cfqueryparam value="#arguments.EmailOrUserName#" cfsqltype="cf_sql_varchar"/>
 							   OR UserName= <cfqueryparam value="#arguments.EmailOrUserName#" cfsqltype="cf_sql_varchar"/>
 						SELECT AccountId,
-							   UserName,
+							   UserName,ImagePath
 							   PasswordHash
 							   FROM AccountDetails
 							   WHERE EmailId=<cfqueryparam value="#arguments.emailOrUserName#" cfsqltype="cf_sql_varchar"/>
@@ -34,9 +34,9 @@
 						<cflogin>
 							<cfloginuser name="#updateSessionIdcollectUserDetails.UserName#" password="#updateSessionIdcollectUserDetails.PasswordHash#" roles="user">
 						</cflogin>
-						<cfset Session.loggedInUser={'userName'=updateSessionIdcollectUserDetails.UserName,'isUserLoggedIn'="true",'userId'=updateSessionIdcollectUserDetails.AccountId}/>
+						<cfset Session.loggedInUser={'userName'=updateSessionIdcollectUserDetails.UserName,'isUserLoggedIn'=true,'userId'=updateSessionIdcollectUserDetails.AccountId}/>
 					<cfelse>
-						<cfreturn "false" />
+						<cfreturn false />
 					</cfif>
 			</cfif>
 		<cfcatch type="database">

@@ -40,7 +40,7 @@
 									'Country'=collectUserDetails.Country,
 									'State'=collectUserDetails.State,
 									'City'=collectUserDetails.City,
-									'isUserLoggedIn'="true"} />
+									'IsUserLoggedIn'="true"} />
 			</cfif >
 			<cfquery name="friendsDetails"> <!---initialise value--->
 			 SELECT contct.FriendId,
@@ -95,6 +95,7 @@
 
 		<cfset var updateprofile=queryNew("")>
 		<cftry>
+			<cftransaction>
 			<cfquery name="updateprofile">
 				UPDATE AccountDetails
 				SET 	FirstName=<cfqueryparam value="#arguments.firstName#" cfsqltype='cf_sql_varchar'>,
@@ -109,6 +110,7 @@
 								   City=<cfqueryparam value="#arguments.city#" cfsqltype='cf_sql_varchar'>
 				WHERE AddressId=(SELECT AddressId FROM AccountDetails WHERE AccountId=<cfqueryparam value="#arguments.userId#" cfsqltype='cf_sql_integer'>)
 			</cfquery>
+			</cftransaction>
 		<cfcatch type="any">
 				<cfset  type=cfcatch.type />
 				<cfset message=cfcatch.message />
