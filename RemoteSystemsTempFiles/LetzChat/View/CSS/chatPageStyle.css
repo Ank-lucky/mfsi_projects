@@ -32,19 +32,24 @@ p {
 
 #wrapper {
   display: flex;
-  height: 100%;
+  height: 100vh;
 }
-
+#user-message-container-list{
+  height:80%;
+  overflow-y:scroll;
+}
 #content {
   flex: 0 1 100%;
   background-color: #eee;
   padding: 15px;
+  display:none;
 }
 
 #left-sidebar {
   flex: 0 0 350px;
   background-color: #65b1bf;
   padding: 5px;
+  height:100vh;
   overflow-y: scroll;
 }
 #left-sidebar .search {
@@ -111,11 +116,13 @@ p {
 }
 
 .user-message-container {
-  margin-bottom: 10px;
+  margin-bottom: 5%;
   display: flex;
   width:50%;
 }
-
+#users-container{
+  height:80%;
+}
 .user-message-avatar {
   margin-right: 10px;
   flex: 0 0 40px;
@@ -145,7 +152,6 @@ p {
   font-style: italic;
   font-size: 12px;
 }
-
 .field {
   width: 100%;
   display: block;
@@ -218,10 +224,10 @@ line-height: 2.5;
 }
 .lastRow{
   border:2px solid black;
-  position: absolute;
+  position: fixed;
   bottom:0;
   height: 8%;
-  width:340px;
+  width:320px;
   cursor: pointer;
   font-size: 0.85em;
   font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
@@ -345,18 +351,21 @@ line-height: 2.5;
 .chatHeader{
   margin:0;
   width:100%;
-  height:10%;
+  /* height:10%; */
   border-bottom:2px solid grey;
   margin-bottom:5%;
 }
 .chatHeader img{
   border-radius: 50%;
-  height:70%;
+  height:50px;
+}
+.chatHeader button{
+  margin-left:50%;
 }
 
 .message-input
 {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 99;
@@ -383,4 +392,11 @@ input[type=file]{
 #profileUpdate input[type=text]{
   padding:2%;
   margin-top:2%;
+}
+#pdfBtn{
+  border-radius: 50%;
+  padding: 2%;
+  background: rgba(219, 145, 6, 0.925);
+  float: right;
+  color:black;
 }

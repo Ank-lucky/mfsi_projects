@@ -314,13 +314,13 @@
 	<cfif url.logout EQ true>
 		<script>
 			<cfoutput>
-			document.getElementById("message").innerHTML="Thanx for using Letz Chat!";
+			document.getElementById("message").innerHTML="Thanx for using Letz Chat!"
 			</cfoutput>
 		</script>
 	<cfelse>
 		<script>
 			<cfoutput>
-			document.getElementById("message").innerHTML="Sorry, couldn't logout successfully..";
+			document.getElementById("message").innerHTML="Sorry, couldn't logout successfully.."
 			</cfoutput>
 		</script>
 	</cfif>
@@ -329,7 +329,7 @@
 	<cfif url.login EQ false>
 		<script>
 			<cfoutput>
-			document.getElementById("message").innerHTML="Sorry,couldn't login because you have entered wrong username/password or someone in here is already logged in.";
+			document.getElementById("message").innerHTML="Sorry,couldn't login because you have entered wrong username/password or someone in here is already logged in."
 			</cfoutput>
 		</script>
 	</cfif>
@@ -338,7 +338,7 @@
 	<cfif url.loginAgain EQ "true">
 		<script>
 			<cfoutput>
-			document.getElementById("message").innerHTML="Please Try to login again.";
+			document.getElementById("message").innerHTML="Please Try to login again."
 			</cfoutput>
 		</script>
 	</cfif>

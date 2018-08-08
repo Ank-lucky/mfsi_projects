@@ -1,13 +1,16 @@
-<!--- <cfif structKeyExists(form,'uploadPicform')> --->
-<!--- 	<cfdump var="#form#"> --->
 
-<!--- 	<cfdump var="#Session.loggedInUser.userId#"> --->
+<cfif structKeyExists(form,'uploadPicform') && structKeyExists(session,'loggedInUser') >
 
-<!--- 		<cfif isDefined("form.profilePic") AND len(form.profilePic) > --->
-<!--- 			<cfset var fileName ="#Session.loggedInUser.userName#"+"_"+"#Session.loggedInUser.userId#"> --->
-<!--- 			<cfdump var="#fileName#" /> --->
-<!--- 			<!--- <cfset var destination=> ---> --->
-<!--- <!--- 			<cffile action="upload" filefield="productImage" destination="#destination#" nameconflict="makeunique" result="upload_result" accept="image/*"> ---> --->
-<!--- <!--- 			<cfset result = application.products.addPicture(#fileName#)/> ---> --->
-<!--- 		</cfif> --->
-<!--- </cfif> --->
+			<cfset fileName=session.loggedInUser.userName&"_"&session.loggedInUser.userId/>
+			<cfset destination = ExpandPath( "../../View/images/uploadPic/#fileName#.jpg" ) />
+		 	<cffile action="upload" filefield="profilePic" destination="#destination#" nameconflict="overwrite" result="upload_result" accept="image/*">
+			<cfset imageName=upload_result.serverFileName>
+			<cfset upload=createObject("component","local.Model.Components.UserProfile").uploadProfilePic(imageName,session.loggedInUser.userId) />
+			<cfif upload EQ true>
+				<cflocation url="../../View/HTML/chatPage.cfm?uploadedPicSuccessfully=true" addtoken="no" />
+			<cfelse>
+				<cflocation url="../../View/HTML/chatPage.cfm?uploadedPicSuccessfully=false" addtoken="no" />
+			</cfif>
+<cfelse>
+			<cflocation url="../../View/HTML/chatPage.cfm" />
+</cfif>

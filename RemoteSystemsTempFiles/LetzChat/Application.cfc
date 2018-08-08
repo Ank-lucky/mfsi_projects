@@ -1,10 +1,12 @@
 <cfcomponent>
 
-	<cfset this.name="LetzChatWebApp"/>
+	<cfset this.name="LetzChatttWebApp"/>
 	<cfset this.applicationTimeout= createTimespan(0,2,0,0)/>
 	<cfset this.datasource="chatDb" />
 	<cfset this.sessionmanagement="yes" />
 	<cfset this.mappings["/local"] = getDirectoryFromPath(getCurrentTemplatePath()) />
+
+	<!--- <cfset this.wschannels= [{name="chatChannel",cfcListener="wsChatApplication"}] /> --->
 
 	<cffunction name="onSessionStart" acess="public" returnType="void" output="false">
 

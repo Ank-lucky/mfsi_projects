@@ -1,6 +1,19 @@
-
 <cfif structKeyExists(Session,"loggedInUser") AND Session.loggedInUser.isUserLoggedIn EQ true>
+<!---websocket initialisation--->
+<!--- <cftry> --->
+<!--- <cfwebsocket name="chatWebsock" onMessage="processOnMessage" subscribeTo="chatChannel"/> --->
+<!--- <script> --->
+<!--- 	function processOnMessage(event,msg){ --->
+<!--- 			console.log(event,msg); --->
+<!--- 	} --->
+<!--- </script> --->
+<!--- <cfcatch type="any"> --->
+<!--- 	<cfdump var="#cfcatch.type#"> --->
+<!--- 	<cfdump var="#cfcatch.message#"> --->
+<!--- </cfcatch> --->
+<!--- </cftry> --->
 <!---Template of the chat Room--->
+
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -13,10 +26,6 @@
   <link rel="stylesheet" href="../CSS/chatPageStyle.css">
   <script src="../JS/jquery-1.12.4.min.js"></script>
   <script rel="text/javascript" src="../../Controller/UserProfile.js"></script>
-  <!--- <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"> --->
-  <!--- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> --->
-  <!--- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> --->
-
 
 </head>
 
@@ -26,7 +35,7 @@
   <aside id="left-sidebar">
 	<div id="userProfile">
 		<div class="userDisplay">
-			<img  src="../images/avatar-default-icon.png" alt="ProfilePic">
+			<img id="dpImage" src="" alt="ProfilePic">
 			<div id="userDesription">
 				<p id="userName"><cfoutput>#Session.loggedInUser.userName#</cfoutput></p>
 				<p id="status">Online</p>
@@ -40,21 +49,22 @@
 			<input  type="text" id="emailId" onkeyup="validatEmail()"/>
 			<input  type="text" id="gender" />
       <input  type="text" id="address" />
-      <form action="../../Controller/CF/UploadDisplayPic.cfm" method="POST">
+      <form action="../../Controller/CF/UploadDisplayPic.cfm" enctype="multipart/form-data" method="POST" name="uploadDp">
       <label id="uploadPic">Upload Profile Picture:</label>
-		<input type="file" name="profilePic" id="profilePic" />
+		  <input type="file" name="profilePic" id="profilePic" />
       <button type="submit" name="uploadPicform" id="uploadBtn">Upload</button>
       </form>
       <button id="updateButton" onclick="updateUserProfile();">Update</button>
 
 		</div>
 	</div>
-    <div class="search">
-      <input type="search" class="field" placeholder="Search">
-      <button class="btn">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
+	    <!--- <div class="search"> -->
+	<!--       <input type="search" class="field" placeholder="Search"> -->
+	<!--       <button class="btn"> -->
+	<!--         <i class="fas fa-search"></i> -->
+	<!--       </button> -->
+	<!--     </div> --->
+	<hr>
     <div id="users-container">
       <ul class="contactList" id="contactList">
 
@@ -82,26 +92,30 @@
   </aside>
   <main id="content">
     <div class="chatHeader">
-      <img src="https://picsum.photos/65/65/">
-      <span id="friendName">Som..<span>
+      <img id="friendDp" src="">
+      <span id="friendName"><span>
     </div>
-    <div class="user-message-container">
-      <div class="user-message-avatar">
+    <button id="pdfBtn" >Pdf</button>
+    <ul id="user-message-container-list">
+    <!--- <div class="user-message-container"> --->
+
+      <!--- <div class="user-message-avatar">
         <img src="https://picsum.photos/65/65/" alt="">
       </div>
       <div class="user-message">
         <span class="user-name">Som..</span>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         <span class="user-date">10.10.2018 14:20PM</span>
-      </div>
-    </div>
-
+      </div> --->
+    <!--- </div> --->
+  </ul>
     <div class="message-input">
 			<div class="wrap">
 			<input type="text" id="wrapInput" placeholder="Write your message..." />
-			<button class="submit"><i class="fa fa-paper-plane " aria-hidden="true"></i></button>
+			<button class="submit" onclick="newMessage()"><i class="fa fa-paper-plane " aria-hidden="true"></i></button>
 			</div>
-		</div>
+	</div>
+
   </main>
 </div>
 
@@ -125,6 +139,19 @@
 </body>
 <script rel="text/javascript" src="../JS/animate.js"></script>
 </html>
+
+<cfif isDefined("url.uploadedPicSuccessfully")>
+<cfif url.uploadedPicSuccessfully EQ true>
+	<script>
+		alert("Successfully Uploaded your profile picture");
+	</script>
+<cfelse>
+	<script>
+		alert("Sorry couldn't upload your profile picture");
+	</script>
+
+</cfif>
+</cfif>
 
 <cfelse>
 	<cflocation url="../../index.cfm?loginAgain=true" addtoken="no">

@@ -4,6 +4,7 @@
 	<cffunction name="doLogin" access="public"  returntype="boolean" >
 		<cfargument name="emailOrUsername" type="string" required="true"/>
 		<cfargument name="passkey" type="string" required="true"/>
+
 		<cfset lockSimultaneousUserLogin=createObject("component","LockSimultaneousLogin").LockMutualLogin("#arguments.emailOrUsername#","#arguments.passkey#")>
 
 		<cftry>
@@ -20,7 +21,7 @@
 							   WHERE  EmailId=<cfqueryparam value="#arguments.EmailOrUserName#" cfsqltype="cf_sql_varchar"/>
 							   OR UserName= <cfqueryparam value="#arguments.EmailOrUserName#" cfsqltype="cf_sql_varchar"/>
 						SELECT AccountId,
-							   UserName,ImagePath
+							   UserName,ImagePath,
 							   PasswordHash
 							   FROM AccountDetails
 							   WHERE EmailId=<cfqueryparam value="#arguments.emailOrUserName#" cfsqltype="cf_sql_varchar"/>
@@ -34,13 +35,13 @@
 						<cflogin>
 							<cfloginuser name="#updateSessionIdcollectUserDetails.UserName#" password="#updateSessionIdcollectUserDetails.PasswordHash#" roles="user">
 						</cflogin>
-						<cfset Session.loggedInUser={'userName'=updateSessionIdcollectUserDetails.UserName,'isUserLoggedIn'=true,'userId'=updateSessionIdcollectUserDetails.AccountId}/>
+						<cfset Session.loggedInUser={'userName'=updateSessionIdcollectUserDetails.UserName,'isUserLoggedIn'=true,'userId'=updateSessionIdcollectUserDetails.AccountId,'image'=updateSessionIdcollectUserDetails.ImagePath}/>
 					<cfelse>
 						<cfreturn false />
 					</cfif>
 			</cfif>
 		<cfcatch type="database">
-					<cfset message=cfcatch.cause.message />
+					<cfset message=cfcatch.message />
 					<cflog type="Error" file="doLogin" text="Exception error Exception message:#message#" />
 					<cfreturn false />
 		</cfcatch>
@@ -63,7 +64,10 @@
 			<cfset structDelete(cookie, 'CFToken') />
 			<cflogout/>
 		<cfcatch type="any">
-			<cfset message=cfcatch.cause.message />
+			<cfset message=cfcatch.message />
+			<!--- <cfdump var="#cfcatch.type#"> --->
+<!--- 			<cfdump var="#message#"> --->
+<!--- 			<cfabort> --->
 			<cflog type="Error" file="logout" text="Exception error Exception type:#cfcatch.type# message:#message#" />
 			<cfreturn false />
 		</cfcatch>

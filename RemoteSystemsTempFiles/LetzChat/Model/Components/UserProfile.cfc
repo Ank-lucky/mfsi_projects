@@ -5,8 +5,8 @@
 		<cfargument name="userId" type="string" required="yes" />
 		<cfset var userDetail={} />
 		<cfset var friendDetail={} />
-		<cfset var collectUserDetails=queryNew("")>
-		<cfset var friendsDetails=queryNew("")>
+		<cfset var collectUserDetails=querynew("")>
+		<cfset var friendsDetails=querynew("")>
 
 		<cftry>
 			<cfquery  name="collectUserDetails">
@@ -42,7 +42,7 @@
 									'City'=collectUserDetails.City,
 									'IsUserLoggedIn'="true"} />
 			</cfif >
-			<cfquery name="friendsDetails"> <!---initialise value--->
+			<cfquery name="friendsDetails">
 			 SELECT contct.FriendId,
 						 		acct.UserName,
 								acct.FirstName,
@@ -59,7 +59,8 @@
 
 				<cfset ctr=1/>
 				<cfloop query="friendsDetails">
-					<cfset friendProfile= {'UserName'=friendsDetails.UserName,
+					<cfset friendProfile= {'FriendId'=friendsDetails.FriendId,
+										   'UserName'=friendsDetails.UserName,
 										   'EmailId'=friendsDetails.EmailId,
 										   'Imagepath'=friendsDetails.Imagepath,
 										   'FirstName'=friendsDetails.FirstName,
@@ -93,7 +94,7 @@
 		<cfargument name="state" type="string" />
 		<cfargument name="city" type="string" />
 
-		<cfset var updateprofile=queryNew("")>
+		<cfset var updateprofile=querynew("")>
 		<cftry>
 			<cftransaction>
 			<cfquery name="updateprofile">
@@ -122,12 +123,36 @@
 		<cfreturn true />
 	</cffunction>
 
+<!---Upload profile Pic--->
+<cffunction name="uploadProfilePic" access="remote"  returntype="boolean">
+	<cfargument name="image" type="string" required="yes" />
+	<cfargument name="userId" type="string" required="yes" />
+	<cfset var getImage=queryNew("") />
+	<cftry>
+		<cfquery>
+			UPDATE AccountDetails SET ImagePath=<cfqueryparam value="#arguments.image#" cfsqltype="cf_sql_varchar" />
+			WHERE AccountId = <cfqueryparam value="#arguments.userId#" cfsqltype="cf_sql_integer" />
+		</cfquery>
+		<cfquery name="getImage">
+			SELECT ImagePath FROM AccountDetails WHERE AccountId=<cfqueryparam value="#arguments.userId#" cfsqltype="cf_sql_integer" />
+		</cfquery>
+		<cfset structAppend(session.loggedInUser,{'image'='getImage.ImagePath'})>
+	<cfcatch>
+		<cflog type="Error" file="uploadProfilePic" text="Exception error Exception type: #type# message:#message#" />
+		<cfreturn false />
+	</cfcatch>
+	</cftry>
+		<cfreturn true />
+
+</cffunction>
+
+
 <!---Function to search contact--->
 	<cffunction name="searchToAddContact" access="remote">
 		<cfargument name="userId" type="string">
 		<cfargument name="keyWord" type="string">
 
-		<cfset var contactList=queryNew("") />
+		<cfset var contactList=querynew("") />
 
 		<cftry>
 			<cfquery name="contactList">
@@ -174,6 +199,58 @@
 
 		</cftry>
 			<cfreturn true />
+</cffunction>
+
+<!---Function to create if ChatRoom is not created and open ChatRoom  --->
+<cffunction name="openChatRoom" access="remote">
+	<cfargument name="userId" type="string" required="yes">
+	<cfargument name="friendId" type="string">
+	<cfargument name="groupId" type="string">
+
+
+	<cfset getChatId=querynew("")>
+	<cfset oneReciever=(arguments.friendId NEQ "NULL") && (arguments.groupId EQ "NULL")>
+	<cfset groupReciever=(arguments.friendId EQ "NULL") && (arguments.groupId NEQ "NULL")>
+		<cftry>
+		<!---If either friendId or groupId is null--->
+		<cfif oneReciever || groupReciever >
+			<!---If not a group chat room--->
+			<cfif arguments.friendId NEQ "NULL">
+				<cfquery name="getChatId">
+					SELECT ChatId FROM ChatRoom
+					WHERE SenderId =<cfqueryparam value="#arguments.userId#" cfsqltype="cf_sql_integer">
+					AND RecieverId=<cfqueryparam value="#arguments.friendId#" cfsqltype="cf_sql_integer">
+
+				</cfquery>
+				<cfif getChatId.recordcount EQ 0>
+					<cfquery>
+						INSERT INTO ChatRoom (SenderId,RecieverId)
+						VALUES (<cfqueryparam  value="#arguments.userId#" cfsqltype="cf_sql_integer">,
+								<cfqueryparam value="#arguments.friendId#" cfsqltype="cf_sql_integer">)
+					</cfquery>
+				</cfif>
+					<cfquery name="getChatIdAndRecieverDetails">
+						SELECT cr.ChatId,cr.RecieverId,acc.UserName,acc.ImagePath
+						FROM ChatRoom cr JOIN AccountDetails acc
+						ON (SenderId =<cfqueryparam value="#arguments.userId#" cfsqltype="cf_sql_integer">
+						AND RecieverId=<cfqueryparam value="#arguments.friendId#" cfsqltype="cf_sql_integer">
+						AND acc.AccountId = <cfqueryparam value="#arguments.friendId#" cfsqltype="cf_sql_integer">)
+
+					</cfquery>
+
+			</cfif>
+		</cfif>
+		<cfcatch type="any">
+			<cfset var type=cfcatch.type>
+			<cfset var message=cfcatch.message>
+			<cflog type="Error" file="openChatRoom" text="Exception error Exception type: #type# message:#message#">
+		</cfcatch>
+		</cftry>
+		<cfoutput>
+			#serializeJSON(getChatIdAndRecieverDetails)#
+		</cfoutput>
+
+
 </cffunction>
 
 </cfcomponent>
