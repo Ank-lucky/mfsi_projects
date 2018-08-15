@@ -1,2 +1,3 @@
 # mfsi_projects
-Simple front-end projects
+Projects using:
+HTML,CSS,JS,JQUERY,COLDFUSION,SQL
